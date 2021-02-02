@@ -1,4 +1,4 @@
-// Avatar API
+ // Avatar API
     
 function createAvatar() {
 
@@ -9,33 +9,22 @@ function createAvatar() {
 		"x-rapidapi-host": "doppelme-avatars.p.rapidapi.com"
 	}
     })
-    .then(response => {
-        console.log("The Result src is: " + response.status + "\n" + response.avatarSrc + "\n" + response.thumbnailSrc);
-        return response.json()
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        console.log("Status" + data.status + "\nAvatar SRC" + data.avatarSrc + "\nThumbnail SRC" + data.thumbnailSrc);
+    
+        var imageurl = data.thumbnailSrc;
+        var img = document.createElement('img');
+        img.src = imageurl
+        document.body.appendChild(img);
+
     })
     .catch(err => {
         console.error(err);
     });
 
 }
-
-function create2Avatar() {
-    // Finding the Player's ID
-    var url = "https://avatars.dicebear.com/4.5/api/male/john.svg?background=%230000ff";
-    var a = fetch(url);
-
-    a.then(response => {
-        console.log(response);
-        return response.json();
-    })
-    /*
-    .then(data => {
-        var x = data;
-        console.log(x);
-    })*/
-}
-
-
 
 
 // Cart API
