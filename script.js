@@ -1,4 +1,4 @@
- // Avatar API
+// Avatar API
     
 function createAvatar() {
 
