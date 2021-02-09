@@ -14,8 +14,8 @@
       <p >NoNego 💸💻</p>
     </section>
     <section class="row justify-content-center">
-      <section class="col-12 col-sm-6 col-md-3">
-        <form class="form-container">
+      <section class="col-12 col-sm-6 col-md-3 form-container">
+        <form>
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
             <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
@@ -25,9 +25,32 @@
             <label for="exampleInputPassword1">Password</label>
             <input type="password" class="form-control" id="inputPass" placeholder="Password">
           </div>
-          <button type="submit" class="btn btn-primary" id="LogInButton">Log In</button>
-          <a href="">Click Here To Sign Up</a>
         </form>
+        <button class="btn btn-primary" id="LogInButton">Log In</button>
+        <h2 onclick="signUp()">Click Here To Sign Up</h2>
+      </section>
+    </section>
+  </section>
+
+  <section class="signUp container-fluid">
+    <section class="row justify-content-center">
+      <section class="col-12 col-sm-6 col-md-3 form-container">
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="createEmail" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+          <div class="form-group">
+            <label for="createPass">Password</label>
+            <input type="password" class="form-control" id="createPass" placeholder="Password">
+          </div>
+          <div class="form-group">
+            <label for="createPassCfm">Confirm Password</label>
+            <input type="password" class="form-control" id="createPassCfm" placeholder="Confirm Password">
+          </div>
+        </form>
+        <button class="btn btn-primary" id="SignUpButton">Sign Up</button>
       </section>
     </section>
   </section>
@@ -41,8 +64,9 @@
 <script src="script.js"></script>
 
 <script>
+  $(".signUp").hide();
 
-    var settings = {
+  var settings = {
     "async": true,
     "crossDomain": true,
     "url": "https://studentcrud-a7cf.restdb.io/rest/nonegoidassignment",
@@ -56,7 +80,6 @@
 
   $.ajax(settings).done(function (response) {
     console.log(response);
-    console.log(response[0].useremail + response[0].userpass);
 
     document.getElementById("LogInButton").addEventListener("click", function()
     {
@@ -70,11 +93,11 @@
       {
         redirectHomePage();
       }
-      if (i === 2)
+      else if (i === 2)
       {
         alert("Wrong Password");
       }
-      else 
+      else
       {
         alert("ACCOUNT DOES NOT EXIST");
       }
@@ -87,21 +110,69 @@
       {
         if (inputEmail.value == response[i].useremail && inputPass.value == response[i].userpass )
         {
-          return 1; 
+          return 1;
         }
         else if (inputEmail.value == response[i].useremail && inputPass.value != response[i].userpass)
         {
           return 2;
         }
       }
-      return 3;
     }
 
     function redirectHomePage() {
-      window.location.href = "file:///D:/School/Year%201.2/Interactive%20Development/Assignment%203/ID_Louwen-ZhiHong_Assignment-3/personalization.html";
+      window.location.href = 'home.html';
+    }
+  });
+
+///////////////////////////////////////////////////
+/// SIGINING UP
+///////////////////////////////////////////////////
+
+  function signUp()
+  {
+    $(".signUp").show();
+  }
+
+  $("#SignUpButton").on("click", function (e) {
+    e.preventDefault();
+
+    let email = $("#createEmail").val();
+    let pass = $("#createPass").val();
+    //[STEP 3]: get form values when user clicks on send
+    //Adapted from restdb api
+    let jsondata = {
+      "useremail": email,
+      "userpass": pass
+    };
+
+    console.log(jsondata);
+
+    let settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "https://studentcrud-a7cf.restdb.io/rest/nonegoidassignment",
+      "method": "POST",
+      "headers": {
+        "content-type": "application/json",
+        "x-apikey": '5ffd5eb61346a1524ff12901',
+        "cache-control": "no-cache"
+      },
+      "processData": false,
+      "data": JSON.stringify(jsondata),
+      "beforeSend": function(){
+        $("#SignUpButton").prop("disabled", true);
+        
+      }
     }
 
-  });
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+      
+      $("#SignUpButton").prop( "disabled", false);
+    });
+  }); 
+
+
 </script>
 
 </body>
