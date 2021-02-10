@@ -43,13 +43,13 @@
     </div>
     <div class="row d-flex justify-content-center">
         <div id="AvtarPicSpace" class="col-3 bg-secondary">
-            <img src="https://gutta.lv/wp-content/uploads/2015/10/test-img.jpg" id="sampleImg"class="img-fluid rounded-circle w-51 m-2 mt-4" alt="img not available">
+          <p id="sampleAvatar">Sample</p>
         </div>
 
 
         <div class="col-5 text-center bg-primary">
 
-          <button id="CreatAvtarButton" onclick="createAvatar()">Click Here To Create Avatar</button>
+          <button id="CreatAvtarButton" onclick="viewAvatarNav()">Click Here To Create Avatar</button>
 
           <!-- Edit/Create Avtar Nav Bar -->
           <nav id="CavtarNavBar"class="navbar navbar-expand-lg navbar-light bg-white">
@@ -77,12 +77,12 @@
           <section id="CavatarGender">
             <div class="form-check">
               <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="optradio">Male
+                <input type="radio" id="avatarGMale" class="form-check-input" name="optradio" value="male">Male
               </label>
             </div>
             <div class="form-check">
               <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="optradio">Female
+                <input type="radio" id="avatarGFemale" class="form-check-input" name="optradio" value="female">Female
               </label>
             </div>
         </section>
@@ -100,7 +100,7 @@
               <a class="dropdown-item" href="#">Something else here</a>
             </div>
           </div>
-          <button>Test Skin Color</button>
+          <button id="AvatardarkBrownSkin">Test Skin Color (Dark Brown)</button>
         </section>
 
         <!-- Hair -->
@@ -209,6 +209,7 @@
     $('#CavatarHair').hide();
     $('#CavatarExpressions').hide();
 
+    ///////////////////////////////////////
     function avGender()
     {
       $('#CavatarGender').show();
@@ -216,7 +217,16 @@
       $('#CavatarHair').hide();
       $('#CavatarExpressions').hide();
     }
+    document.getElementById("avatarGMale").addEventListener("click", function()
+    {
+      createAvatar("1101");
+    });
+    document.getElementById("avatarGFemale").addEventListener("click", function()
+    { 
+      createAvatar("1102");
+    });
 
+    ///////////////////////////////////////
     function avExpression()
     {
       $('#CavatarExpressions').show();
@@ -225,6 +235,7 @@
       $('#CavatarHair').hide();
     }
 
+    ///////////////////////////////////////
     function avSkin()
     {
       $('#CavatarSkin').show();
@@ -232,6 +243,12 @@
       $('#CavatarExpressions').hide();
       $('#CavatarGender').hide();
     }
+    document.getElementById("AvatardarkBrownSkin").addEventListener("click", function()
+    { 
+      let aCode = localStorage.getItem("AvatarKey");
+      EditAvatarSkin("8D5524", aCode);
+    });
+
 
     function avHair()
     {

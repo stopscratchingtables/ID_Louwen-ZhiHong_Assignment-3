@@ -1,8 +1,16 @@
 // Avatar API
-    
-function createAvatar() {
 
-    fetch("https://doppelme-avatars.p.rapidapi.com/avatar/1101", {
+
+function viewAvatarNav() {
+
+    $('#CreatAvtarButton').hide();
+    $('#CavtarNavBar').show();
+
+}
+    
+function createAvatar(gCode) {
+
+    fetch("https://doppelme-avatars.p.rapidapi.com/avatar/" + gCode , {
 	"method": "POST",
 	"headers": {
 		"x-rapidapi-key": "7ef7505eeemsh4b7ae28b990ec32p10a9e5jsnf404942f045e",
@@ -18,11 +26,8 @@ function createAvatar() {
         var imageurl = data.thumbnailSrc;
         var img = document.createElement('img');
         img.src = imageurl
-        $('#sampleImg').hide();
-        document.getElementById("AvtarPicSpace").appendChild(img);
-
-        $('#CreatAvtarButton').hide();
-        $('#CavtarNavBar').show();
+        $('#sampleAvatar').hide();
+        document.getElementById("AvtarPicSpace").innerHTML = ('<img id="avatarPic" src="' + img.src + '"></img>');
 
         var editSkinButton = ` <button onclick="EditAvatarSkin()">Edit Skin</button> `;
         var editAssetButton = ` <button onclick="EditAvatarAsset()">Edit Asset</button> `;
@@ -38,6 +43,34 @@ function createAvatar() {
     });
 
 }
+
+function EditAvatarSkin(sCode, aCode)
+{
+
+    fetch("https://doppelme-avatars.p.rapidapi.com/avatar/" + aCode + "/skin/" + sCode, {
+	"method": "PUT",
+	"headers": {
+		"x-rapidapi-key": "7ef7505eeemsh4b7ae28b990ec32p10a9e5jsnf404942f045e",
+		"x-rapidapi-host": "doppelme-avatars.p.rapidapi.com"
+	}
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        var x = data;
+        console.log("Thumbnail SRC: " + x.thumbnailSrc);
+
+        var imageurl = x.thumbnailSrc;
+        var img = document.createElement('img');
+        img.src = imageurl
+        document.getElementById("AvtarPicSpace").innerHTML += ('<img id="avatarPic" src="' + img.src + '"></img>');
+    })
+    .catch(err => {
+        console.error(err);
+    });
+    
+}
+
 
 function DeleteAvatar() {
     var avatarKey = localStorage.getItem("AvatarKey");
@@ -56,26 +89,6 @@ function DeleteAvatar() {
         console.error(err);
     });
 
-}
-
-function EditAvatarSkin()
-{
-    var avatarKey = localStorage.getItem("AvatarKey");
-
-    fetch("https://doppelme-avatars.p.rapidapi.com/avatar/" + avatarKey + "/skin/E9CBB9", {
-	"method": "PUT",
-	"headers": {
-		"x-rapidapi-key": "7ef7505eeemsh4b7ae28b990ec32p10a9e5jsnf404942f045e",
-		"x-rapidapi-host": "doppelme-avatars.p.rapidapi.com"
-	}
-    })
-    .then(response => {
-        console.log(response);
-    })
-    .catch(err => {
-        console.error(err);
-    });
-    
 }
 
 function EditAvatarAsset()
