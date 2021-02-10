@@ -18,7 +18,11 @@ function createAvatar() {
         var imageurl = data.thumbnailSrc;
         var img = document.createElement('img');
         img.src = imageurl
-        document.body.appendChild(img);
+        $('#sampleImg').hide();
+        document.getElementById("AvtarPicSpace").appendChild(img);
+
+        $('#CreatAvtarButton').hide();
+        $('#CavtarNavBar').show();
 
         var editSkinButton = ` <button onclick="EditAvatarSkin()">Edit Skin</button> `;
         var editAssetButton = ` <button onclick="EditAvatarAsset()">Edit Asset</button> `;
