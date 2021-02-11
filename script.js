@@ -178,3 +178,42 @@ function EditAvatarAsset()
 }
 
 // Cart API
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://studentcrud-a7cf.restdb.io/rest/product-details",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json",
+      "x-apikey": "5ffd5eb61346a1524ff12901",
+      "cache-control": "no-cache"
+    }
+  }
+  
+  $.ajax(settings).done(function (response) {
+    console.log(response);
+    for (var i = 0; i < response.length; i++)
+    {
+        if (response[i].prod_type == "shirt")
+        {
+            $("#prodImg1").attr("src", response[0].prod_img);
+            $("#prodTitle1").html(response[0].prod_title);
+            $("#prodDesc1").html(response[0].prod_desc);
+            $("#prodPrice1").html(response[0].prod_price);
+            $("#prodImg2").attr("src", response[1].prod_img);
+            $("#prodTitle2").html(response[1].prod_title);
+            $("#prodDesc2").html(response[1].prod_desc);
+            $("#prodPrice2").html(response[1].prod_price);
+        }
+    }
+  });
+  /* work in progress
+  $(".prodType").hide();
+  $(".prodType").each(function(){
+    if ($(this).html() == "knife")
+    {
+        $(this).parent().parent().parent().hide();
+        $(this).parent().parent().parent().show();
+    }
+  });
+  */
