@@ -141,7 +141,7 @@
               <a class="dropdown-item" href="#">Something else here</a>
             </div>
           </div>
-          <button>Test Expression</button>
+          <button id="AvatarAngry">Test Expression</button>
         </section>
         </div>
 
@@ -235,6 +235,12 @@
       $('#CavatarHair').hide();
     }
 
+    document.getElementById("AvatarAngry").addEventListener("click", function()
+    { 
+      let aCode = localStorage.getItem("AvatarKey");
+      EditAvatarAsset("3", aCode);
+    });
+
     ///////////////////////////////////////
     function avSkin()
     {
@@ -248,7 +254,7 @@
       let aCode = localStorage.getItem("AvatarKey");
       EditAvatarSkin("8D5524", aCode);
     });
-
+    ///////////////////////////////////////
 
     function avHair()
     {
