@@ -27,7 +27,7 @@
                             <a href="personalization.html" class="nav-link text-white">My Account</a>
                         </li>
                         <li class="nav-item">
-                            <a href="myCart.html" class="nav-link text-white">My Cart</a>
+                            <a href="myCart.html" class="nav-link text-white myCart">My Cart</a>
                         </li>
                     </ul>
                 </div>
@@ -221,11 +221,12 @@
         document.getElementById('userMembership').innerHTML = `Membership: ${localStorage.getItem("userMembership")}`;
         document.getElementById('userPoints').innerHTML = `Points:  ${localStorage.getItem("userPoints")}`;
         var avatar = localStorage.getItem("userAvatar");
-
-        if (avatar.length > 5)
+        if (avatar != null){
+          if (avatar.length > 5)
         {
           $("avatarDefault").hide();
           document.getElementById('avatarPlace').innerHTML = `${avatar}`;
+        }
         }
 
         var slideIndex = 0;
