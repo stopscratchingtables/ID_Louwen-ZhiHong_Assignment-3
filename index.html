@@ -110,11 +110,11 @@
       {
         if (inputEmail.value == response[i].useremail && inputPass.value == response[i].userpass )
         {
-          sessionStorage.clear();
-          sessionStorage.setItem("userName", response[i].useremail);
-          sessionStorage.setItem("userID", response[i]._id);
-          sessionStorage.setItem("userMembership", response[i].userMembership)
-          sessionStorage.setItem("userPoints", response[i].userPoints)
+          localStorage.clear();
+          localStorage.setItem("userName", response[i].useremail);
+          localStorage.setItem("userID", response[i]._id);
+          localStorage.setItem("userMembership", response[i].userMembership)
+          localStorage.setItem("userPoints", response[i].userPoints)
           return 1;
         }
         else if (inputEmail.value == response[i].useremail && inputPass.value != response[i].userpass)

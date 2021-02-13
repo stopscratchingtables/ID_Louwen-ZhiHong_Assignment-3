@@ -205,9 +205,9 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script src="script.js"></script>
     <script>
-        document.getElementById('wlcBackmsg').innerHTML = `Welcome Back ${sessionStorage.getItem("userName")}`;
-        document.getElementById('userMembership').innerHTML = `Membership: ${sessionStorage.getItem("userMembership")}`;
-        document.getElementById('userPoints').innerHTML = `Points:  ${sessionStorage.getItem("userPoints")}`;
+        document.getElementById('wlcBackmsg').innerHTML = `Welcome Back ${localStorage.getItem("userName")}`;
+        document.getElementById('userMembership').innerHTML = `Membership: ${localStorage.getItem("userMembership")}`;
+        document.getElementById('userPoints').innerHTML = `Points:  ${localStorage.getItem("userPoints")}`;
 
         var slideIndex = 0;
         carousel();

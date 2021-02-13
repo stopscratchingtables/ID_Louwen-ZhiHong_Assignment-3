@@ -47,6 +47,7 @@
                     <div class="card-body p-0">
                         <div class="profile"> <img src="media/shoppingCart.png"> </div>
                         <div class="card-subtitle">
+                          <p>exanoke</p>
                           <table>
                                       <!-- INSERT SHOPPING CART HERE -->
                           </table>
@@ -57,7 +58,53 @@
             </div>
         </div>
 
-    </div>      
+      </div>
+
+    </section>
+
+
+    <section id="rewards">
+
+      <div class='container2'>
+
+        <div class="row" style="justify-content: center;">
+            <div class="card mt-100">
+
+                <div class="card-content">
+
+                    <div class="card-body p-0">
+                        <div class="profile"> 
+                          <img src="media/rewards.png">
+                        </div>
+                        <div class="card-subtitle">
+
+                          <div class="vouchers">
+                            <h3 style="margin-right: 60%;">Vouchers Available: </h3>
+                            
+                            <div class="vchrTypes">
+                              <p style="margin-right: 60%;">vcher 1</p>
+                            </div>
+
+                          </div>
+
+                          <div class="rewards mt-5" style="text-align: left;">
+                            <h3>Membership: <br>
+                              <div id="userMembership"></div>
+                            </h3>
+                            <h3 style="margin-right: 69%;">Points: <br>
+                            <div id="userPoints"></div>
+                          </h3>
+
+                          </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+      </div>
 
     </section>
 
@@ -80,8 +127,12 @@
 <script type="text/javascript" src="phaser.min.js"></script>
 <script type="text/javascript">
 
+  document.getElementById('userMembership').innerHTML = `${localStorage.getItem("userMembership")}`;
+  document.getElementById('userPoints').innerHTML = `${localStorage.getItem("userPoints")}`;
 
   // NOTE: Originally 640x1000. Other possible sizes: 512x800, 400x625
+
+
 
   function startBallGame()
   {
