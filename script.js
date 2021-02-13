@@ -178,7 +178,7 @@ function EditAvatarAsset()
 }
 
 $( document ).ready(function() {
-    sessionStorage.clear()
+    localStorage.clear()
     var cartArray = []
     var settings = {
         "async": true,
@@ -208,8 +208,6 @@ $( document ).ready(function() {
             }
         }
       });
-      var cartItems = localStorage.getItem("cartItem");
-      cartItems = JSON.parse(cartItems);
       var addToCartButtons = $(".purchase")
       for (var i = 0; i < addToCartButtons.length; i++)
       {
@@ -218,6 +216,8 @@ $( document ).ready(function() {
       }
       
       function addToCart(event) {
+        var cartItems = localStorage.getItem("cartItem");
+        cartItems = JSON.parse(cartItems);
           var button = event.target;
           var shopItem = button.parentElement.parentElement;
           var title = shopItem.getElementsByClassName("prodTitle")[0].innerText;
