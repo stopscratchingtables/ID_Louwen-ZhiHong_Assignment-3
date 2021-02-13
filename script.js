@@ -177,43 +177,94 @@ function EditAvatarAsset()
     
 }
 
-// Cart API
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "https://studentcrud-a7cf.restdb.io/rest/product-details",
-    "method": "GET",
-    "headers": {
-      "content-type": "application/json",
-      "x-apikey": "5ffd5eb61346a1524ff12901",
-      "cache-control": "no-cache"
-    }
-  }
-  
-  $.ajax(settings).done(function (response) {
-    console.log(response);
-    for (var i = 0; i < response.length; i++)
-    {
-        if (response[i].prod_type == "shirt")
-        {
-            $("#prodImg1").attr("src", response[0].prod_img);
-            $("#prodTitle1").html(response[0].prod_title);
-            $("#prodDesc1").html(response[0].prod_desc);
-            $("#prodPrice1").html(response[0].prod_price);
-            $("#prodImg2").attr("src", response[1].prod_img);
-            $("#prodTitle2").html(response[1].prod_title);
-            $("#prodDesc2").html(response[1].prod_desc);
-            $("#prodPrice2").html(response[1].prod_price);
+$( document ).ready(function() {
+    sessionStorage.clear()
+    var cartArray = []
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://studentcrud-a7cf.restdb.io/rest/product-details",
+        "method": "GET",
+        "headers": {
+          "content-type": "application/json",
+          "x-apikey": "5ffd5eb61346a1524ff12901",
+          "cache-control": "no-cache"
         }
-    }
-  });
-  /* work in progress
-  $(".prodType").hide();
-  $(".prodType").each(function(){
-    if ($(this).html() == "knife")
-    {
-        $(this).parent().parent().parent().hide();
-        $(this).parent().parent().parent().show();
-    }
-  });
-  */
+      }
+      
+      $.ajax(settings).done(function (response) {
+        for (var i = 0; i < response.length; i++)
+        {
+            if (response[i].prod_type == "shirt")
+            {
+                $("#prodImg1").attr("src", response[0].prod_img);
+                $("#prodTitle1").html(response[0].prod_title);
+                $("#prodDesc1").html(response[0].prod_desc);
+                $("#prodPrice1").html(response[0].prod_price);
+                $("#prodImg2").attr("src", response[1].prod_img);
+                $("#prodTitle2").html(response[1].prod_title);
+                $("#prodDesc2").html(response[1].prod_desc);
+                $("#prodPrice2").html(response[1].prod_price);
+            }
+        }
+      });
+      var cartItems = localStorage.getItem("cartItem");
+      cartItems = JSON.parse(cartItems);
+      var addToCartButtons = $(".purchase")
+      for (var i = 0; i < addToCartButtons.length; i++)
+      {
+        var button = addToCartButtons[i]
+        button.addEventListener("click", addToCart);
+      }
+      
+      function addToCart(event) {
+          var button = event.target;
+          var shopItem = button.parentElement.parentElement;
+          var title = shopItem.getElementsByClassName("prodTitle")[0].innerText;
+          var img = shopItem.getElementsByClassName("prodImg")[0].src;
+          var price = shopItem.getElementsByClassName("prodPrice")[0].innerText;
+          if (CheckCartItems(title, cartItems) == false){
+            var newCartItem = new CartItems(img, title, price);
+            cartArray.push(newCartItem);
+            localStorage.setItem("cartItem", JSON.stringify(cartArray));
+          }
+          else{
+              console.log("exist")
+          }
+      }
+      function CheckCartItems(title, list) {
+          if (list != null) {
+            for (var i = 0; i < list.length; i++) {
+                if (list[i].title == title) {
+                    return true;
+                }
+            }
+          }
+          return false;
+      }
+      function DisplayCartItems(list) {
+        if (list != null) {
+            for (var i = 0; i < list.length; i++) {
+                console.log(list[i].title)
+            }
+        }
+      }
+      function CartItems(img, title, price) {
+          this.img = img;
+          this.title = title;
+          this.price = price;
+      }
+    
+      /* work in progress
+      $(".prodType").hide();
+      $(".prodType").each(function(){
+        if ($(this).html() == "knife")
+        {
+            $(this).parent().parent().parent().hide();
+            $(this).parent().parent().parent().show();
+        }
+      });
+      */
+});
+
+
