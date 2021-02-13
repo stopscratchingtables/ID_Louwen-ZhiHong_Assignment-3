@@ -211,23 +211,7 @@
     <script src="script.js"></script>
     <script>
 
-          const progress = document.querySelector('.progress-done');
-
-          progress.style.width = progress.getAttribute('data-done') + '%';
-          progress.style.opacity = 1;
-
-
-        document.getElementById('wlcBackmsg').innerHTML = `Welcome Back ${localStorage.getItem("userName")}`;
-        document.getElementById('userMembership').innerHTML = `Membership: ${localStorage.getItem("userMembership")}`;
-        document.getElementById('userPoints').innerHTML = `Points:  ${localStorage.getItem("userPoints")}`;
-        var avatar = localStorage.getItem("userAvatar");
-
-        if (avatar.length > 5)
-        {
-          $("avatarDefault").hide();
-          document.getElementById('avatarPlace').innerHTML = `${avatar}`;
-        }
-
+      
         var slideIndex = 0;
         carousel();
 
@@ -243,6 +227,22 @@
           setTimeout(carousel, 2000); // Change image every 2 seconds
         }
 
+        const progress = document.querySelector('.progress-done');
+
+        progress.style.width = progress.getAttribute('data-done') + '%';
+        progress.style.opacity = 1;
+
+
+        document.getElementById('wlcBackmsg').innerHTML = `Welcome Back ${localStorage.getItem("userName")}`;
+        document.getElementById('userMembership').innerHTML = `Membership: ${localStorage.getItem("userMembership")}`;
+        document.getElementById('userPoints').innerHTML = `Points:  ${localStorage.getItem("userPoints")}`;
+        var avatar = localStorage.getItem("userAvatar");
+
+        if (avatar.length > 5)
+        {
+          $("avatarDefault").hide();
+          document.getElementById('avatarPlace').innerHTML = `${avatar}`;
+        }
 
     </script>
 </body>
