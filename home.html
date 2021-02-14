@@ -27,7 +27,7 @@
                             <a href="personalization.html" class="nav-link text-white">My Account</a>
                         </li>
                         <li class="nav-item">
-                            <a href="myCart.html" class="nav-link text-white">My Cart</a>
+                            <a href="myCart.html" class="nav-link text-white myCart">My Cart</a>
                         </li>
                     </ul>
                 </div>
@@ -207,11 +207,32 @@
         </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="script.js"></script>
     <script>
 
+<<<<<<< HEAD
       
+=======
+          const progress = document.querySelector('.progress-done');
+
+          progress.style.width = progress.getAttribute('data-done') + '%';
+          progress.style.opacity = 1;
+
+
+        document.getElementById('wlcBackmsg').innerHTML = `Welcome Back ${localStorage.getItem("userName")}`;
+        document.getElementById('userMembership').innerHTML = `Membership: ${localStorage.getItem("userMembership")}`;
+        document.getElementById('userPoints').innerHTML = `Points:  ${localStorage.getItem("userPoints")}`;
+        var avatar = localStorage.getItem("userAvatar");
+        if (avatar != null){
+          if (avatar.length > 5)
+        {
+          $("avatarDefault").hide();
+          document.getElementById('avatarPlace').innerHTML = `${avatar}`;
+        }
+        }
+
+>>>>>>> 8f1a01abad8a0d4864c500c9f5d4184a4265b84a
         var slideIndex = 0;
         carousel();
 

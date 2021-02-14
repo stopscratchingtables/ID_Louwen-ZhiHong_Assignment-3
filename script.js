@@ -180,6 +180,38 @@ function EditAvatarAsset()
 $( document ).ready(function() {
     localStorage.clear()
     var cartArray = []
+    function addToCart(event) {
+        var cartItems = localStorage.getItem("cartItem");
+        cartItems = JSON.parse(cartItems);
+        var button = event.target;
+        var shopItem = button.parentElement.parentElement;
+        var title = shopItem.getElementsByClassName("prodTitle")[0].innerText;
+        var img = shopItem.getElementsByClassName("prodImg")[0].src;
+        var price = shopItem.getElementsByClassName("prodPrice")[0].innerText;
+        if (CheckCartItems(title, cartItems) == false){
+          var newCartItem = new CartItems(img, title, price);
+          cartArray.push(newCartItem);
+          localStorage.setItem("cartItem", JSON.stringify(cartArray));
+        }
+        else{
+            console.log("exist")
+        }
+    }
+    function CheckCartItems(title, list) {
+        if (list != null) {
+          for (var i = 0; i < list.length; i++) {
+              if (list[i].title == title) {
+                  return true;
+              }
+          }
+        }
+        return false;
+    }
+    function CartItems(img, title, price) {
+        this.img = img;
+        this.title = title;
+        this.price = price;
+    }
     var settings = {
         "async": true,
         "crossDomain": true,
@@ -214,46 +246,7 @@ $( document ).ready(function() {
         var button = addToCartButtons[i]
         button.addEventListener("click", addToCart);
       }
-      
-      function addToCart(event) {
-        var cartItems = localStorage.getItem("cartItem");
-        cartItems = JSON.parse(cartItems);
-          var button = event.target;
-          var shopItem = button.parentElement.parentElement;
-          var title = shopItem.getElementsByClassName("prodTitle")[0].innerText;
-          var img = shopItem.getElementsByClassName("prodImg")[0].src;
-          var price = shopItem.getElementsByClassName("prodPrice")[0].innerText;
-          if (CheckCartItems(title, cartItems) == false){
-            var newCartItem = new CartItems(img, title, price);
-            cartArray.push(newCartItem);
-            localStorage.setItem("cartItem", JSON.stringify(cartArray));
-          }
-          else{
-              console.log("exist")
-          }
-      }
-      function CheckCartItems(title, list) {
-          if (list != null) {
-            for (var i = 0; i < list.length; i++) {
-                if (list[i].title == title) {
-                    return true;
-                }
-            }
-          }
-          return false;
-      }
-      function DisplayCartItems(list) {
-        if (list != null) {
-            for (var i = 0; i < list.length; i++) {
-                console.log(list[i].title)
-            }
-        }
-      }
-      function CartItems(img, title, price) {
-          this.img = img;
-          this.title = title;
-          this.price = price;
-      }
+      //$(".cartAppend").append("<div> <h1>'test'</h1> </div>");
     
       /* work in progress
       $(".prodType").hide();
