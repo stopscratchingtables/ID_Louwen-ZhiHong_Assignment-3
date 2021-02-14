@@ -177,7 +177,6 @@ function EditAvatarAsset()
 }
 
 $( document ).ready(function() {
-    localStorage.clear()
     var cartArray = []
     function addToCart(event) {
         var cartItems = localStorage.getItem("cartItem");
@@ -211,34 +210,6 @@ $( document ).ready(function() {
         this.title = title;
         this.price = price;
     }
-    var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": "https://studentcrud-a7cf.restdb.io/rest/product-details",
-        "method": "GET",
-        "headers": {
-          "content-type": "application/json",
-          "x-apikey": "5ffd5eb61346a1524ff12901",
-          "cache-control": "no-cache"
-        }
-      }
-      
-      $.ajax(settings).done(function (response) {
-        for (var i = 0; i < response.length; i++)
-        {
-            if (response[i].prod_type == "shirt")
-            {
-                $("#prodImg1").attr("src", response[0].prod_img);
-                $("#prodTitle1").html(response[0].prod_title);
-                $("#prodDesc1").html(response[0].prod_desc);
-                $("#prodPrice1").html(response[0].prod_price);
-                $("#prodImg2").attr("src", response[1].prod_img);
-                $("#prodTitle2").html(response[1].prod_title);
-                $("#prodDesc2").html(response[1].prod_desc);
-                $("#prodPrice2").html(response[1].prod_price);
-            }
-        }
-      });
       var addToCartButtons = $(".purchase")
       for (var i = 0; i < addToCartButtons.length; i++)
       {
