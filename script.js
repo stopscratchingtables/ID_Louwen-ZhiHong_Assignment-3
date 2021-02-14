@@ -216,18 +216,24 @@ $( document ).ready(function() {
         var button = addToCartButtons[i]
         button.addEventListener("click", addToCart);
       }
-      //$(".cartAppend").append("<div> <h1>'test'</h1> </div>");
-    
-      /* work in progress
       $(".prodType").hide();
-      $(".prodType").each(function(){
-        if ($(this).html() == "knife")
-        {
-            $(this).parent().parent().parent().hide();
-            $(this).parent().parent().parent().show();
-        }
+      $(".prodTypeSearch").change(function(){
+        $(".prodType").each(function(){
+            console.log($(this).html())
+            if ($(".prodTypeSearch").val() == "all") {
+                if ($(this).parent().parent().parent().is(":hidden")) {
+                    $(this).parent().parent().parent().show();   
+                }
+            }
+            else if ($(this).html() != $(".prodTypeSearch").val())
+            {
+                $(this).parent().parent().parent().hide();
+            }
+            else{
+                $(this).parent().parent().parent().show();
+            }
+      })
       });
-      */
 });
 
 

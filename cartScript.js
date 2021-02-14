@@ -27,7 +27,7 @@ $( document ).ready(function() {
       function CalcCartTotal(cartItems) {
           var sum = 0
         $(".cartPrice").each(function(){
-            sum += parseInt($(this).html());
+            sum += parseFloat($(this).html());
           });
           $(".cartTotal").html(sum);
       }
