@@ -1,6 +1,5 @@
 // Avatar API
 
-
 function viewAvatarNav() {
 
     $('#CreatAvtarButton').hide();

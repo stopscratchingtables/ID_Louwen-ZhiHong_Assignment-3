@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="home.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>NoNego 💸💻 - HomePage</title>
 </head>
 <body>
@@ -207,34 +208,29 @@
         </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="script.js"></script>
     <script>
 
-<<<<<<< HEAD
-      
-=======
-          const progress = document.querySelector('.progress-done');
-
-          progress.style.width = progress.getAttribute('data-done') + '%';
-          progress.style.opacity = 1;
-
+        const userName = localStorage.getItem("userName");
+        const _id = localStorage.getItem("userID");
+        const userMembership = localStorage.getItem("userMembership");
+        const userPoints = localStorage.getItem("userPoints");
+        const userAvatar = localStorage.getItem("userAvatar");
 
         document.getElementById('wlcBackmsg').innerHTML = `Welcome Back ${localStorage.getItem("userName")}`;
         document.getElementById('userMembership').innerHTML = `Membership: ${localStorage.getItem("userMembership")}`;
         document.getElementById('userPoints').innerHTML = `Points:  ${localStorage.getItem("userPoints")}`;
-        var avatar = localStorage.getItem("userAvatar");
-        if (avatar != null){
-          if (avatar.length > 5)
-        {
-          $("avatarDefault").hide();
-          document.getElementById('avatarPlace').innerHTML = `${avatar}`;
-        }
-        }
+        
+        localStorage.setItem("userName", userName);
+        localStorage.setItem("userID", _id);
+        localStorage.setItem("userMembership", userMembership);
+        localStorage.setItem("userPoints", userPoints);
+        localStorage.setItem("userAvatar", userAvatar);
 
->>>>>>> 8f1a01abad8a0d4864c500c9f5d4184a4265b84a
-        var slideIndex = 0;
-        carousel();
+        const progress = document.querySelector('.progress-done');
+
+        progress.style.width = progress.getAttribute('data-done') + '%';
+        progress.style.opacity = 1;
 
         function carousel() {
           var i;
@@ -248,22 +244,17 @@
           setTimeout(carousel, 2000); // Change image every 2 seconds
         }
 
-        const progress = document.querySelector('.progress-done');
-
-        progress.style.width = progress.getAttribute('data-done') + '%';
-        progress.style.opacity = 1;
-
-
-        document.getElementById('wlcBackmsg').innerHTML = `Welcome Back ${localStorage.getItem("userName")}`;
-        document.getElementById('userMembership').innerHTML = `Membership: ${localStorage.getItem("userMembership")}`;
-        document.getElementById('userPoints').innerHTML = `Points:  ${localStorage.getItem("userPoints")}`;
         var avatar = localStorage.getItem("userAvatar");
-
-        if (avatar.length > 5)
+        if (avatar != null){
+          if (avatar.length > 5)
         {
           $("avatarDefault").hide();
           document.getElementById('avatarPlace').innerHTML = `${avatar}`;
         }
+        }
+
+        var slideIndex = 0;
+        carousel();
 
     </script>
 </body>
