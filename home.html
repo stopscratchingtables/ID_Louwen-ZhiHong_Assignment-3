@@ -47,7 +47,7 @@
                     <h4 id="userMembership">Membership: <span></span></h4>
                     <h4 id="userPoints">Points: <span></span></h4>
                     <div class="progress">
-                      <div class="progress-done" data-done="100">
+                      <div class="progress-done" data-done="85">
                         100%
                       </div>
                     </div>
@@ -211,21 +211,14 @@
     <script src="script.js"></script>
     <script>
 
-        const userName = localStorage.getItem("userName");
-        const _id = localStorage.getItem("userID");
-        const userMembership = localStorage.getItem("userMembership");
-        const userPoints = localStorage.getItem("userPoints");
-        const userAvatar = localStorage.getItem("userAvatar");
+      // DISPLAYING USER'S DETAILS
 
         document.getElementById('wlcBackmsg').innerHTML = `Welcome Back ${localStorage.getItem("userName")}`;
         document.getElementById('userMembership').innerHTML = `Membership: ${localStorage.getItem("userMembership")}`;
         document.getElementById('userPoints').innerHTML = `Points:  ${localStorage.getItem("userPoints")}`;
-        
-        localStorage.setItem("userName", userName);
-        localStorage.setItem("userID", _id);
-        localStorage.setItem("userMembership", userMembership);
-        localStorage.setItem("userPoints", userPoints);
-        localStorage.setItem("userAvatar", userAvatar);
+
+
+      // DISPLAYING POINT LOYALTY BAR
 
         const progress = document.querySelector('.progress-done');
 
