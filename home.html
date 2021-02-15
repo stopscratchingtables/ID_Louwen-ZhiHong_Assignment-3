@@ -47,7 +47,7 @@
                     <h4 id="userMembership">Membership: <span></span></h4>
                     <h4 id="userPoints">Points: <span></span></h4>
                     <div class="progress">
-                      <div class="progress-done" data-done="85">
+                      <div class="progress-done" data-done="100">
                         100%
                       </div>
                     </div>
@@ -380,18 +380,20 @@
     <script src="script.js"></script>
     <script>
 
+
       // DISPLAYING USER'S DETAILS
 
         document.getElementById('wlcBackmsg').innerHTML = `Welcome Back ${localStorage.getItem("userName")}`;
         document.getElementById('userMembership').innerHTML = `Membership: ${localStorage.getItem("userMembership")}`;
         document.getElementById('userPoints').innerHTML = `Points:  ${localStorage.getItem("userPoints")}`;
 
-
       // DISPLAYING POINT LOYALTY BAR
 
         const progress = document.querySelector('.progress-done');
+        progress.innerHTML = localStorage.getItem("userPoints");
 
-        progress.style.width = progress.getAttribute('data-done') + '%';
+        var points = parseInt(localStorage.getItem("userPoints")) / 900 * 100
+        progress.style.width = points + '%';
         progress.style.opacity = 1;
 
         function carousel() {

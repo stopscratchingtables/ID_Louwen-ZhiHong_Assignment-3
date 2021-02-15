@@ -16,8 +16,14 @@
   Omega - 300 to 899
   Alpha - 900 and above
 
--->
+  Every Item Purchased = 2 tokens
+  Each token = Play Game
+  Play Game = Earn Points
+  Points = Get Vouchers
 
+
+
+-->
 
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
@@ -120,8 +126,22 @@
                           <div class="vouchers">
                             <h3 style="margin-right: 60%;">Vouchers Available: </h3>
                             
-                            <div class="vchrTypes">
-                              <p style="margin-right: 60%;">vcher 1</p>
+                            <div id="vchrTypes">
+<!--
+                              <div class="vchr row" style="justify-content: center;">
+
+                                <div class="col-sm-6">
+                                  <div class="card">
+                                    <div class="card-body" style="margin-top: 75px;">
+                                      <h5 class="card-title">Special title treatment</h5>
+                                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                      <a href="#" class="btn btn-primary">Apply Voucher</a>
+                                    </div>
+                                  </div>
+                                </div> 
+
+                              </div> -->
+
                             </div>
 
                           </div>
@@ -132,6 +152,10 @@
                             </h3>
                             <h3 style="text-align: left;" style="margin-right: 69%;">Points: <br>
                             <div style="text-align: left;" id="userPoints"></div>
+                            </h3>
+
+                            <h3 style="text-align: left;" style="margin-right: 69%;">Game Tokens: <br>
+                              <div style="text-align: left;" id="gameTokens"></div>
                             </h3>
                             
                             <div class="progress">
@@ -155,30 +179,30 @@
 
   </header>
 
-
-
-
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="script.js"></script>
 <script type="text/javascript" src="phaser.min.js"></script>
 <script type="text/javascript">
 
   const progress = document.querySelector('.progress-done');
+  progress.innerHTML = localStorage.getItem("userPoints");
 
-  progress.style.width = progress.getAttribute('data-done') + '%';
+  var points = parseInt(localStorage.getItem("userPoints")) / 900 * 100
+  progress.style.width = points + '%';
   progress.style.opacity = 1;
+
+  foreach
 
 
   document.getElementById('userMembership').innerHTML = `${localStorage.getItem("userMembership")}`;
   document.getElementById('userPoints').innerHTML = `${localStorage.getItem("userPoints")}`;
+  document.getElementById('gameTokens').innerHTML = `${localStorage.getItem("userTokens")}`;
+
 
   // NOTE: Originally 640x1000. Other possible sizes: 512x800, 400x625
-
-
-
   function startBallGame()
   {
     var game = new Phaser.Game(400, 625, Phaser.CANVAS, '', { preload: preload, create: create, update: update });
