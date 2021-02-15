@@ -16,8 +16,14 @@
   Omega - 300 to 899
   Alpha - 900 and above
 
--->
+  Every Item Purchased = 2 tokens
+  Each token = Play Game
+  Play Game = Earn Points
+  Points = Get Vouchers
 
+
+
+-->
 
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
@@ -94,8 +100,22 @@
                           <div class="vouchers">
                             <h3 style="margin-right: 60%;">Vouchers Available: </h3>
                             
-                            <div class="vchrTypes">
-                              <p style="margin-right: 60%;">vcher 1</p>
+                            <div id="vchrTypes">
+<!--
+                              <div class="vchr row" style="justify-content: center;">
+
+                                <div class="col-sm-6">
+                                  <div class="card">
+                                    <div class="card-body" style="margin-top: 75px;">
+                                      <h5 class="card-title">Special title treatment</h5>
+                                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                      <a href="#" class="btn btn-primary">Apply Voucher</a>
+                                    </div>
+                                  </div>
+                                </div> 
+
+                              </div> -->
+
                             </div>
 
                           </div>
@@ -107,6 +127,10 @@
                             <h3 style="text-align: left;" style="margin-right: 69%;">Points: <br>
                             <div style="text-align: left;" id="userPoints"></div>
                             </h3>
+
+                            <h3 style="text-align: left;" style="margin-right: 69%;">Game Tokens: <br>
+                              <div style="text-align: left;" id="gameTokens"></div>
+                            </h3>
                             
                             <div class="progress">
                               <div class="progress-done" data-done="100">
@@ -114,7 +138,23 @@
                               </div>
                             </div>
 
-                            <button onclick="startBallGame()">Start Game</button>
+                            <div id="gamesProfiles" class="profile">
+                              <button onclick="startBallGame()">
+                                <img src="media/basketball.png">
+                              </button>
+                              <button onclick="inProgress()">
+                                <img src="media/dinosaur.png" alt="">
+                              </button>
+                              <button onclick="inProgress()">
+                                <img src="media/flappyBird.png">
+                              </button>
+                            </div>
+
+                            <button id="gsBtn" onclick="displayGames()">Start Game</button>
+                            <div id="egBtnPlace"></div>
+
+                            <div id="gameLocation" style="justify-content: center;">
+                            </div>
 
                         </div>
                     </div>
@@ -128,28 +168,64 @@
     </section>
 
   </header>
-
-<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+  <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="script.js"></script>
 <script type="text/javascript" src="phaser.min.js"></script>
 <script type="text/javascript">
 
-  const progress = document.querySelector('.progress-done');
+  $("#gamesProfiles").hide();
 
-  progress.style.width = progress.getAttribute('data-done') + '%';
+  const progress = document.querySelector('.progress-done');
+  progress.innerHTML = localStorage.getItem("userPoints");
+
+  var points = parseInt(localStorage.getItem("userPoints")) / 900 * 100
+  progress.style.width = points + '%';
   progress.style.opacity = 1;
 
 
   document.getElementById('userMembership').innerHTML = `${localStorage.getItem("userMembership")}`;
   document.getElementById('userPoints').innerHTML = `${localStorage.getItem("userPoints")}`;
+  document.getElementById('gameTokens').innerHTML = `${localStorage.getItem("userTokens")}`;
+
+  function inProgress() 
+  {
+    alert("STILL WORKING ON IT");
+  }
+
+  function displayGames()
+  {
+    if (localStorage.getItem("userTokens") <= 0)
+    {
+      alert("You do not have any tokens! Please purchase items to obtain tokens!");
+    }
+    else 
+    {
+      $("#gamesProfiles").show();
+      $("#gsBtn").hide();
+    }
+  }
+
+  function endGame()
+  {
+
+    console.log("Ending Game");
+    $("#gamesProfiles").hide();
+    $("span").remove();
+    $("canvas").remove();
+
+    var userID = localStorage.getItem("userID");
+    console.log(userID);
+    var hScore = sessionStorage.getItem("basketballhighScore");
+    afterGame(userID, hScore * 10);
+
+  }
+
 
   // NOTE: Originally 640x1000. Other possible sizes: 512x800, 400x625
-
-
-
   function startBallGame()
   {
     var game = new Phaser.Game(400, 625, Phaser.CANVAS, '', { preload: preload, create: create, update: update });
@@ -258,7 +334,8 @@
   
     var instructions = document.createElement("span");
     instructions.innerHTML = "Instructions: Quickly drag the ball to shoot the ball into the hoop!";
-    document.body.appendChild(instructions);
+    instructions.innerHTML += `<br><button onclick="endGame()">End Game</button>`;
+    document.getElementById("gameLocation").appendChild(instructions);
   }
   
   function update() {
@@ -288,6 +365,7 @@
         current_score_text.text = '';
         current_best_text.text = 'Current Best';
         current_best_score_text.text = high_score;
+        sessionStorage.setItem("basketballhighScore", high_score);
       }
       emoji = game.add.sprite(180, 100, emojiName);
       emoji.scale.setTo(0.25, 0.25);

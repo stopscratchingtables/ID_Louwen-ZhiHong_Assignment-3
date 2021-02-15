@@ -182,11 +182,26 @@
 
           <div class="text-center">
             <h1>Friend's List</h1>
-            <div class="bg-white">
-              <h1>Friend 1 - jwjfwojoi</h1>
+            <div>
+
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Avatar</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Membership</th>
+                    <th scope="col">Points</th>
+                  </tr>
+                </thead>
+                <tbody id="friendsTable">
+
+                </tbody>
+              </table>
+
+              
             </div>
-            <button type="button" class="btn btn-success">Add Friend</button>
-            <button type="button" class="btn btn-danger">Delete Friend</button>
+            <button onclick="AddFriend()" type="button" class="btn btn-success">Add Friend</button>
+            <button onclick="DeleteFriend()" type="button" class="btn btn-danger">Delete Friend</button>
           </div>
 
         </div>
@@ -264,7 +279,53 @@
       $('#CavatarExpressions').hide();
     }
 
+  // DISPLAYING FRIENDS LIST
+
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://studentcrud-a7cf.restdb.io/rest/nonegoidassignment",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json",
+      "x-apikey": "5ffd5eb61346a1524ff12901",
+      "cache-control": "no-cache"
+    }
+  }
+
+  $.ajax(settings).done(function (response) {
+    console.log(response);
+
+    var friendsList = localStorage.getItem("friendsList").split(",");
+    console.log(friendsList);
+
+    for (var i = 0; i < friendsList.length; i++)
+    {
+      for (var x = 0; x < response.length; x++)
+      {
+        if (friendsList[i] == response[x].useremail)
+        {
+          document.getElementById("friendsTable").innerHTML += 
+          `<tr>
+              <th scope="row">${response[x].userAvatar}</th>
+              <td>${response[x].useremail}</td>
+              <td>${response[x].userMembership}</td>
+              <td>${response[x].userPoints}</td>
+          </tr>`
+        }
+      }
+    }
+
+  });
+
+function AddFriend()
+{
+  
+  console.log("add friend tab");
+
+}
 
   </script>
 </body>
 </html>
+
