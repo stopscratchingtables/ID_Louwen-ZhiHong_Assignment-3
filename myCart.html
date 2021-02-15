@@ -164,7 +164,23 @@
                               </div>
                             </div>
 
-                            <button onclick="startBallGame()">Start Game</button>
+                            <div id="gamesProfiles" class="profile">
+                              <button onclick="startBallGame()">
+                                <img src="media/basketball.png">
+                              </button>
+                              <button onclick="inProgress()">
+                                <img src="media/dinosaur.png" alt="">
+                              </button>
+                              <button onclick="inProgress()">
+                                <img src="media/flappyBird.png">
+                              </button>
+                            </div>
+
+                            <button id="gsBtn" onclick="displayGames()">Start Game</button>
+                            <div id="egBtnPlace"></div>
+
+                            <div id="gameLocation" style="justify-content: center;">
+                            </div>
 
                         </div>
                     </div>
@@ -187,6 +203,8 @@
 <script type="text/javascript" src="phaser.min.js"></script>
 <script type="text/javascript">
 
+  $("#gamesProfiles").hide();
+
   const progress = document.querySelector('.progress-done');
   progress.innerHTML = localStorage.getItem("userPoints");
 
@@ -194,12 +212,43 @@
   progress.style.width = points + '%';
   progress.style.opacity = 1;
 
-  foreach
-
 
   document.getElementById('userMembership').innerHTML = `${localStorage.getItem("userMembership")}`;
   document.getElementById('userPoints').innerHTML = `${localStorage.getItem("userPoints")}`;
   document.getElementById('gameTokens').innerHTML = `${localStorage.getItem("userTokens")}`;
+
+  function inProgress() 
+  {
+    alert("STILL WORKING ON IT");
+  }
+
+  function displayGames()
+  {
+    if (localStorage.getItem("userTokens") <= 0)
+    {
+      alert("You do not have any tokens! Please purchase items to obtain tokens!");
+    }
+    else 
+    {
+      $("#gamesProfiles").show();
+      $("#gsBtn").hide();
+    }
+  }
+
+  function endGame()
+  {
+
+    console.log("Ending Game");
+    $("#gamesProfiles").hide();
+    $("span").remove();
+    $("canvas").remove();
+
+    var userID = localStorage.getItem("userID");
+    console.log(userID);
+    var hScore = sessionStorage.getItem("basketballhighScore");
+    afterGame(userID, hScore * 10);
+
+  }
 
 
   // NOTE: Originally 640x1000. Other possible sizes: 512x800, 400x625
@@ -311,7 +360,8 @@
   
     var instructions = document.createElement("span");
     instructions.innerHTML = "Instructions: Quickly drag the ball to shoot the ball into the hoop!";
-    document.body.appendChild(instructions);
+    instructions.innerHTML += `<br><button onclick="endGame()">End Game</button>`;
+    document.getElementById("gameLocation").appendChild(instructions);
   }
   
   function update() {
@@ -341,6 +391,7 @@
         current_score_text.text = '';
         current_best_text.text = 'Current Best';
         current_best_score_text.text = high_score;
+        sessionStorage.setItem("basketballhighScore", high_score);
       }
       emoji = game.add.sprite(180, 100, emojiName);
       emoji.scale.setTo(0.25, 0.25);

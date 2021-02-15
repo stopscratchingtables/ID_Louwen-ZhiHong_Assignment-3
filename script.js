@@ -343,3 +343,32 @@ $( document ).ready(function() {
     }
 
   });
+
+function afterGame(userID, newPoints)
+{
+
+    var prevPoints = localStorage.getItem("userPoints");
+
+    var jsondata = {"userTokens": parseInt(localStorage.getItem("userTokens")) - 1, "userPoints": parseInt(prevPoints + newPoints)};
+    var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://studentcrud-a7cf.restdb.io/rest/nonegoidassignment/" + userID,
+    "method": "PUT",
+    "headers": {
+        "content-type": "application/json",
+        "x-apikey": "5ffd5eb61346a1524ff12901",
+        "cache-control": "no-cache"
+    },
+    "processData": false,
+    "data": JSON.stringify(jsondata)
+    }
+
+    $.ajax(settings).done(function (response) {
+    console.log(response);
+    localStorage.setItem("userTokens" - 1);
+    localStorage.setItem("userPoints", prevPoints + newPoints);
+    sessionStorage.clear();
+    });
+
+}

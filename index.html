@@ -142,6 +142,7 @@
           localStorage.setItem("userPoints", response[i].userPoints);
           localStorage.setItem("userAvatar", response[i].userAvatar);
           localStorage.setItem("userTokens", response[i].userTokens);
+          localStorage.setItem("friendsList", response[i].friendsList);
           return 1;
         }
         else if (inputEmail.value == response[i].useremail && inputPass.value != response[i].userpass)
