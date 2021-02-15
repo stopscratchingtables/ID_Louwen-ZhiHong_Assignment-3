@@ -125,11 +125,12 @@
                         </div>
                         <div class="input-group" id="prodType">
                             <span class="input-group-text">Type</span>
-                            <select class="form-select form-select-sm" aria-label="form-select">
-                                <option selected></option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <select class="form-select form-select-sm prodTypeSearch" aria-label="form-select">
+                                <option value="all">all</option>
+                                <option value="shirt">Shirts</option>
+                                <option value="electronics">Electronics</option>
+                                <option value="food">Food</option>
+                                <option value="kitchen">Kitchen</option>
                               </select>
                         </div>
                     </form>
@@ -138,11 +139,11 @@
             <div class="row row-cols-1 row-cols-md-3 g-4 bg-secondary">
                 <div class="col shopItem">
                   <div class="card">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-rq5iBWllJcZMcrNkXYer-TaRO4cOgWMJzQLOgezfSUSK-SVxBRrRINBadfMuWqJh-Pn9TuI&usqp=CAc" class="card-img-top prodImg" id="prodImg1" alt="img fail to load">
+                    <img src="products/shirts/green_tshirt.jpg" class="card-img-top prodImg" alt="img fail to load">
                     <div class="card-body">
-                      <h5 class="card-title prodTitle" id="prodTitle1">Green T-Shirt</h5>
-                      <p class="card-text prodDesc" id="prodDesc1">Very Comfortable T-Shirt</p>
-                      <h4 id="prodPrice1">$<span class="prodPrice">12.00</span></h4>
+                      <h5 class="card-title prodTitle" >Green T-Shirt</h5>
+                      <p class="card-text prodDesc" >Very Comfortable T-Shirt</p>
+                      <h4>$<span class="prodPrice">12.00</span></h4>
                       <p class="prodType">shirt</p>
                       <button type="button rounded" class="btn btn-secondary purchase">Purchase</button>
                     </div>
@@ -150,60 +151,228 @@
                 </div>
                 <div class="col shopItem">
                   <div class="card">
-                    <img src="https://gutta.lv/wp-content/uploads/2015/10/test-img.jpg" class="card-img-top prodImg" id="prodImg2" alt="...">
+                    <img src="products/shirts/naruto_tshirt.jpg" class="card-img-top prodImg" alt="...">
                     <div class="card-body">
-                      <h5 class="card-title prodTitle" id="prodTitle2">Card title</h5>
-                      <p class="card-text prodDesc" id="prodDesc2">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      <h4 class="prodPrice" id="prodPrice2"></h4>
-                      <p class="prodType">knife</p>
+                      <h5 class="card-title prodTitle">Naruto T-Shirt</h5>
+                      <p class="card-text prodDesc">Become the Hokage with this awesome shirt!</p>
+                      <h4>$<span class="prodPrice">12.00</span></h4>
+                      <p class="prodType">shirt</p>
                       <button type="button rounded" class="btn btn-secondary purchase">Purchase</button>
                     </div>
                   </div>
                 </div>
                 <div class="col shopItem">
                   <div class="card">
-                    <img src="https://gutta.lv/wp-content/uploads/2015/10/test-img.jpg" class="card-img-top prodImg" alt="...">
+                    <img src="products/shirts/frog_tshirt.jpg" class="card-img-top prodImg" alt="...">
                     <div class="card-body">
-                      <h5 class="card-title prodTitle">test</h5>
-                      <p class="card-text prodDesc">test desc</p>
-                      <h4 class="prodPrice">11</h4>
+                      <h5 class="card-title prodTitle">Frog T-Shirt</h5>
+                      <p class="card-text prodDesc">Stylish Tshirt With a frog on it</p>
+                      <h4>$<span class="prodPrice">13.00</span></h4>
+                      <p class="prodType">shirt</p>
+                      <button type="button rounded" class="btn btn-secondary purchase">Purchase</button>
+                    </div>
+                  </div>
+                </div><div class="col shopItem">
+                  <div class="card">
+                    <img src="products/shirts/saltbae_tshirt.jpg" class="card-img-top prodImg" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title prodTitle">SaltBae Meme T-Shirt</h5>
+                      <p class="card-text prodDesc">Tshirt with saltbae on it</p>
+                      <h4>$<span class="prodPrice">12.00</span></h4>
+                      <p class="prodType">shirt</p>
+                      <button type="button rounded" class="btn btn-secondary purchase">Purchase</button>
+                    </div>
+                  </div>
+                </div><div class="col shopItem">
+                  <div class="card">
+                    <img src="products/shirts/starwars_tshirt.jpg" class="card-img-top prodImg" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title prodTitle">StarWars T-Shirt</h5>
+                      <p class="card-text prodDesc">Starwars T-Shirt featuring DarthVader and friends</p>
+                      <h4>$<span class="prodPrice">12.00</span></h4>
+                      <p class="prodType">shirt</p>
+                      <button type="button rounded" class="btn btn-secondary purchase">Purchase</button>
+                    </div>
+                  </div>
+                </div><div class="col shopItem">
+                  <div class="card">
+                    <img src="products/kitchen/Air_Fryer.jpg" class="card-img-top prodImg" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title prodTitle">Air Fryer</h5>
+                      <p class="card-text prodDesc">Able to fry stuff Oil Free</p>
+                      <h4>$<span class="prodPrice">70.00</span></h4>
+                      <p class="prodType">kitchen</p>
+                      <button type="button rounded" class="btn btn-secondary purchase">Purchase</button>
+                    </div>
+                  </div>
+                </div><div class="col shopItem">
+                  <div class="card">
+                    <img src="products/kitchen/cutting_board.jpg" class="card-img-top prodImg" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title prodTitle">Multi Purpose Cutting Board</h5>
+                      <p class="card-text prodDesc">Cutting Board with multiple compartments to store the things you cut.</p>
+                      <h4>$<span class="prodPrice">30.00</span></h4>
+                      <p class="prodType">kitchen</p>
+                      <button type="button rounded" class="btn btn-secondary purchase">Purchase</button>
+                    </div>
+                  </div>
+                </div><div class="col shopItem">
+                  <div class="card">
+                    <img src="products/kitchen/images.jpg" class="card-img-top prodImg " alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title prodTitle">Sharp Knife</h5>
+                      <p class="card-text prodDesc">Very sharp knife, can cut anything you want.</p>
+                      <h4>$<span class="prodPrice">20.00</span></h4>
+                      <p class="prodType">kitchen</p>
+                      <button type="button rounded" class="btn btn-secondary purchase">Purchase</button>
+                    </div>
+                  </div>
+                </div><div class="col shopItem">
+                  <div class="card">
+                    <img src="products/kitchen/Knife_rack.jpg" class="card-img-top prodImg" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title prodTitle">Knife Rack</h5>
+                      <p class="card-text prodDesc">Knife Rack to hold your very sharp knives</p>
+                      <h4>$<span class="prodPrice">21.00</span></h4>
+                      <p class="prodType">kitchen</p>
+                      <button type="button rounded" class="btn btn-secondary purchase">Purchase</button>
+                    </div>
+                  </div>
+                </div><div class="col shopItem">
+                  <div class="card">
+                    <img src="products/kitchen/Wok.jpg" class="card-img-top prodImg" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title prodTitle">Chinese Wok</h5>
+                      <p class="card-text prodDesc">Very Durable Wok, can be used to cook all your stir fry dishes</p>
+                      <h4>$<span class="prodPrice">12.00</span></h4>
+                      <p class="prodType">kitchen</p>
+                      <button type="button rounded" class="btn btn-secondary purchase">Purchase</button>
+                    </div>
+                  </div>
+                </div><div class="col shopItem">
+                  <div class="card">
+                    <img src="products/foods/Indomie.jpg" class="card-img-top prodImg" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title prodTitle">Indomie</h5>
+                      <p class="card-text prodDesc">Packet of Indomie</p>
+                      <h4>$<span class="prodPrice">3.00</span></h4>
+                      <p class="prodType">food</p>
+                      <button type="button rounded" class="btn btn-secondary purchase">Purchase</button>
+                    </div>
+                  </div>
+                </div><div class="col shopItem">
+                  <div class="card">
+                    <img src="products/foods/Oreo.jpg" class="card-img-top prodImg" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title prodTitle">Oreo Original Flavour</h5>
+                      <p class="card-text prodDesc">Packet of Delicious oreos.</p>
+                      <h4>$<span class="prodPrice">3.50</span></h4>
+                      <p class="prodType">food</p>
+                      <button type="button rounded" class="btn btn-secondary purchase">Purchase</button>
+                    </div>
+                  </div>
+                </div><div class="col shopItem">
+                  <div class="card">
+                    <img src="products/foods/Pringles.jpg" class="card-img-top prodImg" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title prodTitle">Pringles Sour Cream and Onion Flavour</h5>
+                      <p class="card-text prodDesc">Bottle of Pringles</p>
+                      <h4>$<span class="prodPrice">2.50</span></h4>
+                      <p class="prodType">food</p>
+                      <button type="button rounded" class="btn btn-secondary purchase">Purchase</button>
+                    </div>
+                  </div>
+                </div><div class="col shopItem">
+                  <div class="card">
+                    <img src="products/foods/Skittles.jpg" class="card-img-top prodImg" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title prodTitle">Skittles</h5>
+                      <p class="card-text prodDesc">Packet of Rainbow coloured Skittles.</p>
+                      <h4>$<span class="prodPrice">2.00</span></h4>
+                      <p class="prodType">food</p>
+                      <button type="button rounded" class="btn btn-secondary purchase">Purchase</button>
+                    </div>
+                  </div>
+                </div><div class="col shopItem">
+                  <div class="card">
+                    <img src="products/foods/Snickers.jpg" class="card-img-top prodImg" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title prodTitle">Fun Sized snickers</h5>
+                      <p class="card-text prodDesc">Packet Of Fun Siaxed Snickers</p>
+                      <h4>$<span class="prodPrice">5.00</span></h4>
+                      <p class="prodType">food</p>
+                      <button type="button rounded" class="btn btn-secondary purchase">Purchase</button>
+                    </div>
+                  </div>
+                </div><div class="col shopItem">
+                  <div class="card">
+                    <img src="products/electronics/Airpod.jpg" class="card-img-top prodImg" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title prodTitle">Apple Airpods</h5>
+                      <p class="card-text prodDesc">Pair Of Apples famous bluetooth earpiece</p>
+                      <h4>$<span class="prodPrice">178.00</span></h4>
+                      <p class="prodType">electronics</p>
+                      <button type="button rounded" class="btn btn-secondary purchase">Purchase</button>
+                    </div>
+                  </div>
+                </div><div class="col shopItem">
+                  <div class="card">
+                    <img src="products/electronics/Drone.jpg" class="card-img-top prodImg" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title prodTitle">Flying Drone</h5>
+                      <p class="card-text prodDesc">State of the art flying drone, that can fly at very fast speeds</p>
+                      <h4>$<span class="prodPrice">1000.00</span></h4>
+                      <p class="prodType">electronics</p>
+                      <button type="button rounded" class="btn btn-secondary purchase">Purchase</button>
+                    </div>
+                  </div>
+                </div><div class="col shopItem">
+                  <div class="card">
+                    <img src="products/electronics/Gaming_Chair.jpg" class="card-img-top prodImg" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title prodTitle">Gaming Chair</h5>
+                      <p class="card-text prodDesc">Elite Gaming Chair for intense gaming sessions.</p>
+                      <h4>$<span class="prodPrice">120.00</span></h4>
+                      <p class="prodType">electronics</p>
+                      <button type="button rounded" class="btn btn-secondary purchase">Purchase</button>
+                    </div>
+                  </div>
+                </div><div class="col shopItem">
+                  <div class="card">
+                    <img src="products/electronics/Mechanical_KeyBaord.jpg" class="card-img-top prodImg" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title prodTitle">Mechanical keyboard</h5>
+                      <p class="card-text prodDesc">Mechanical Keyboard with beutiful RGB lighting</p>
+                      <h4>$<span class="prodPrice">55.00</span></h4>
+                      <p class="prodType">electronics</p>
                       <button type="button rounded" class="btn btn-secondary purchase">Purchase</button>
                     </div>
                   </div>
                 </div>
                 <div class="col shopItem">
                   <div class="card">
-                    <img src="https://gutta.lv/wp-content/uploads/2015/10/test-img.jpg" class="card-img-top prodImg" alt="...">
+                    <img src="products/electronics/Portable_Charger.jpg" class="card-img-top prodImg" alt="...">
                     <div class="card-body">
-                      <h5 class="card-title prodTitle">Card title</h5>
-                      <p class="card-text prodDesc">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      <h4 class="prodPrice"></h4>
+                      <h5 class="card-title prodTitle">Portable Charger</h5>
+                      <p class="card-text prodDesc">25000 Mvh Portable Charger, enough for 3 full charges</p>
+                      <h4>$<span class="prodPrice">25.00</span></h4>
+                      <p class="prodType">electronics</p>
                       <button type="button rounded" class="btn btn-secondary purchase">Purchase</button>
                     </div>
                   </div>
                 </div>
-                <div class="col shopItem">
-                    <div class="card">
-                      <img src="https://gutta.lv/wp-content/uploads/2015/10/test-img.jpg" class="card-img-top prodImg" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title prodTitle">Card title</h5>
-                        <p class="card-text prodDesc">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <h4 class="prodPrice"></h4>
-                        <button type="button rounded" class="btn btn-secondary purchase">Purchase</button>
-                      </div>
-                    </div>
+              <div class="col shopItem">
+                <div class="card">
+                  <img src="products/electronics/Razer_Mouse.jpg" class="card-img-top prodImg" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title prodTitle">Gaming Mouse</h5>
+                    <p class="card-text prodDesc">Responsive Gaming Mouse</p>
+                    <h4>$<span class="prodPrice">45.00</span></h4>
+                    <p class="prodType">electronics</p>
+                    <button type="button rounded" class="btn btn-secondary purchase">Purchase</button>
                   </div>
-                  <div class="col shopItem">
-                    <div class="card">
-                      <img src="https://gutta.lv/wp-content/uploads/2015/10/test-img.jpg" class="card-img-top prodImg" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title prodTitle">Card title</h5>
-                        <p class="card-text prodDesc">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <h4 class="prodPrice"></h4>
-                        <button type="button rounded" class="btn btn-secondary purchase">Purchase</button>
-                      </div>
-                    </div>
-                  </div>
+                </div>
+              </div>
               </div>
         </div>
     </section>
