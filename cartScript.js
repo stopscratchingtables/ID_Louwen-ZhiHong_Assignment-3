@@ -1,4 +1,5 @@
   // Vouchers Display
+  // LOUWEN ADDED THIS
 
   var settings = {
     "async": true,
@@ -234,3 +235,43 @@ $( document ).ready(function() {
       CalcCartTotal();  
       Purchase();
 });
+
+
+// LOUWEN ADDED THIS 
+function AddToken(itemPurchasedAmt)
+{
+
+    var jsondata = {
+        "friendsList": localStorage.getItem("friendsList"),
+        "userAvatar": localStorage.getItem("userAvatar"),
+        "userMembership": localStorage.getItem("userMembership"),
+        "userPoints": localStorage.getItem("userPoints"),
+        "useremail": localStorage.getItem("userName"),
+        "userpass": localStorage.getItem("userPass"),
+
+        // This row will be affected
+        "userTokens": parseInt(localStorage.getItem("userTokens")) + parseInt(itemPurchasedAmt),
+        };
+        var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://studentcrud-a7cf.restdb.io/rest/nonegoidassignment/" + localStorage.getItem("userID"),
+        "method": "PUT",
+        "headers": {
+        "content-type": "application/json",
+        "x-apikey": "5ffd5eb61346a1524ff12901",
+        "cache-control": "no-cache"
+            },
+            "processData": false,
+            "data": JSON.stringify(jsondata)
+        }
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+
+        // REFRESHES NEW DATA INTO LOCAL STORAGE
+        refreshData();
+        alert("Refresh to get updated details");
+    });
+
+}
