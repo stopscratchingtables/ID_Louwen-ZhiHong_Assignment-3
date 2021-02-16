@@ -33,7 +33,7 @@
                     <div class="card-body" style="margin-top: 75px;">
                       <h5 class="card-title">${response[i].voucherName}</h5>
                       <p class="card-text">${response[i].voucherDesc}</p>
-                      <button onclick="ApplyVcherButton(${response[i].voucherValue})" class="${response[i]._id}" value="${response[i].voucherValue}" class="btn btn-primary">Apply Voucher</button>
+                      <button onclick="ApplyVcherButton(${response[i].voucherValue}, ${response[i].voucherCat}, ${response[i].voucherMinValue})" class="${response[i]._id}" value="${response[i].voucherValue}" class="btn btn-primary">Apply Voucher</button>
                     </div>
                   </div>
                 </div>
@@ -61,7 +61,7 @@
                     <div class="card-body" style="margin-top: 75px;">
                       <h5 class="card-title">${response[i].voucherName}</h5>
                       <p class="card-text">${response[i].voucherDesc}</p>
-                      <button onclick="ApplyVcherButton(${response[i].voucherValue})" class="${response[i]._id}" value="${response[i].voucherValue}" class="btn btn-primary">Apply Voucher</button>
+                      <button onclick="ApplyVcherButton(${response[i].voucherValue}, ${response[i].voucherCat}, ${response[i].voucherMinValue})" class="${response[i]._id}" value="${response[i].voucherValue}" class="btn btn-primary">Apply Voucher</button>
                     </div>
                   </div>
                 </div>
@@ -90,7 +90,7 @@
                     <div class="card-body" style="margin-top: 75px;">
                       <h5 class="card-title">${response[i].voucherName}</h5>
                       <p class="card-text">${response[i].voucherDesc}</p>
-                      <button onclick="ApplyVcherButton(${response[i].voucherValue})" class="${response[i]._id}" value="${response[i].voucherValue}" class="btn btn-primary">Apply Voucher</button>
+                      <button onclick="ApplyVcherButton(${response[i].voucherValue}, ${response[i].voucherCat}, ${response[i].voucherMinValue})" class="${response[i]._id}" value="${response[i].voucherValue}" class="btn btn-primary">Apply Voucher</button>
                     </div>
                   </div>
                 </div>
@@ -105,7 +105,7 @@
   });
 
   
-function ApplyVcherButton(value)
+function ApplyVcherButton(value, category)
 {
 
     console.log(value);
