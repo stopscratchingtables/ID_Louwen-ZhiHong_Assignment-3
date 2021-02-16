@@ -200,10 +200,25 @@
 
               
             </div>
-            <button onclick="AddFriend()" type="button" class="btn btn-success">Add Friend</button>
-            <button onclick="DeleteFriend()" type="button" class="btn btn-danger">Delete Friend</button>
+            <button id="afBtn" onclick="AddFriend()" type="button" class="btn btn-success">Add Friend</button>
+            <button id="dfBtm" onclick="DeleteFriend()" type="button" class="btn btn-danger">Delete Friend</button>
           </div>
 
+          <div id="addFriendTab">
+            <div class="form-group" id="addFriendForm">
+              <label for="addFriend">Email address</label>
+              <input type="email" class="form-control w-50" id="addFriend" aria-describedby="emailHelp" placeholder="Enter email">
+              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+          </div>
+          <div>
+            <button id="submitAddFriends">Submit</button>
+          </div>
+
+          <div id="deleteFriendTab">
+            <h3>Select Friend(s) You wish to Remove</h3>
+          </div>
+            <button id="cfmDelFriends" onclick="cfmDelFriends()">Confirm Delete</button>
         </div>
 
     </div>
@@ -217,6 +232,12 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="script.js"></script>
   <script>
+
+    $('#addFriendTab').hide();
+    $('#submitAddFriends').hide();
+    $('#deleteFriendTab').hide();
+    $('#cfmDelFriends').hide();
+
     $('#CavtarNavBar').hide();
     
     $('#CavatarGender').hide();
@@ -280,6 +301,7 @@
     }
 
   // DISPLAYING FRIENDS LIST
+var friendsList = localStorage.getItem("friendsList").split(",");
 
 var settings = {
     "async": true,
@@ -294,9 +316,7 @@ var settings = {
   }
 
   $.ajax(settings).done(function (response) {
-    console.log(response);
 
-    var friendsList = localStorage.getItem("friendsList").split(",");
     console.log(friendsList);
 
     for (var i = 0; i < friendsList.length; i++)
@@ -320,9 +340,156 @@ var settings = {
 
 function AddFriend()
 {
-  
-  console.log("add friend tab");
+  $('#addFriendTab').show();
+  $('#submitAddFriends').show();
+  $('#afBtn').hide();
+  $('#dfBtn').hide();
+}
 
+function DeleteFriend()
+{
+
+  $('#deleteFriendTab').show();
+  $('#afBtn').hide();
+  $('#dfBtn').hide();
+
+  for (var i = 0; i<friendsList.length; i++)
+  {
+    document.getElementById("deleteFriendTab").innerHTML += `
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" name="userFriends" value="${friendsList[i]}" id="flexCheckDefault">
+      <label class="form-check-label" for="flexCheckDefault">
+        ${friendsList[i]}
+      </label>
+    </div>
+    `;
+  }
+
+  $('#cfmDelFriends').show();
+
+}
+
+function cfmDelFriends()
+{
+
+  const checkboxes = document.querySelectorAll('input[name="userFriends"]:checked');
+
+  let checkedFriends = [];
+  checkboxes.forEach((checkbox) => {
+    checkedFriends.push(checkbox.value);
+  });
+
+  for (i = 0; i < checkedFriends.length; i++)
+  {
+    removeElement(friendsList, checkedFriends[i]);
+  }
+
+  function removeElement(array, elem) {
+    var index = array.indexOf(elem);
+    if (index > -1) {
+        array.splice(index, 1);
+    }
+  }
+
+  var newFriends = friendsList.toString();
+  UpdateFriendsList(newFriends);
+
+}
+
+var submitNewFriends = document.getElementById("submitAddFriends");
+
+submitNewFriends.addEventListener("click", function()
+{
+
+  var x = document.getElementById("addFriend");
+  console.log(x.value)
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://studentcrud-a7cf.restdb.io/rest/nonegoidassignment",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json",
+      "x-apikey": "5ffd5eb61346a1524ff12901",
+      "cache-control": "no-cache"
+    }
+  }
+
+  $.ajax(settings).done(function (response) {
+
+    var result = CheckUserExists(response, x.value);
+    console.log(result);
+    if (result == 2 || x.value == "")
+    {
+      alert("Account does not exist");
+    }
+    else if (result == 1)
+    {
+      var y = CheckFriendInList(friendsList, x.value);
+
+      if (y == 1)
+      {
+        alert("friend already exists in your current list");
+      }
+      else if (y == 2)
+      {
+        friendsList.push(x.value);
+        newFriends = friendsList.toString();
+        UpdateFriendsList(newFriends);
+      }
+
+    }
+
+  });
+
+});
+
+function CheckUserExists(response, inputEmail)
+{
+  for (let i = 0; i < response.length; i++)
+  {
+    if (response[i].useremail === inputEmail)
+    {
+      return 1;
+    }
+  }
+  return 2;
+}
+
+function CheckFriendInList(friendsList, inputEmail)
+{
+  for (z = 0; z < friendsList.length; z++)
+  {
+    if (friendsList[z] === inputEmail)
+    {
+      return 1;
+    }
+  }
+  return 2;
+}
+
+function UpdateFriendsList(newFriends)
+{
+  
+  var userID = localStorage.getItem("userID");
+  var jsondata = {"friendsList": newFriends};
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://studentcrud-a7cf.restdb.io/rest/nonegoidassignment/" + userID,
+    "method": "PUT",
+    "headers": {
+      "content-type": "application/json",
+      "x-apikey": "5ffd5eb61346a1524ff12901",
+      "cache-control": "no-cache"
+    },
+    "processData": false,
+    "data": JSON.stringify(jsondata)
+  }
+
+  $.ajax(settings).done(function (response) {
+    console.log(response);
+  });
 }
 
   </script>
