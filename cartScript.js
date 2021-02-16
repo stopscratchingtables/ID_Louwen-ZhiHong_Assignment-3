@@ -1,3 +1,127 @@
+  // Vouchers Display
+
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://studentcrud-a7cf.restdb.io/rest/nonego-vouchers",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json",
+      "x-apikey": "5ffd5eb61346a1524ff12901",
+      "cache-control": "no-cache"
+    }
+  }
+  
+  $.ajax(settings).done(function (response) {
+    console.log(response);
+
+    if (localStorage.getItem("userPoints") < 300)
+    {
+        rangeMax = 300;
+        rangeMin = 0;
+        for (let i = 0; i < response.length; i++)
+        {
+            if (response[i].voucherMinPoints < rangeMax && response[i].voucherMinPoints <= localStorage.getItem("userPoints"))
+            {
+                var v = document.getElementById("vchrTypes");
+                v.innerHTML += `
+                
+                <div class="vchr row" style="justify-content: center;">
+    
+                <div class="col-sm-6">
+                  <div class="card">
+                    <div class="card-body" style="margin-top: 75px;">
+                      <h5 class="card-title">${response[i].voucherName}</h5>
+                      <p class="card-text">${response[i].voucherDesc}</p>
+                      <button onclick="ApplyVcherButton(${response[i].voucherValue})" class="${response[i]._id}" value="${response[i].voucherValue}" class="btn btn-primary">Apply Voucher</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    
+                `;
+            }
+        }
+    }
+    else if (localStorage.getItem("userPoints") >= 300 && localStorage.getItem("userPoints") < 900)
+    {
+        rangeMax = 900;
+        rangeMin = 300;
+        for (let i = 0; i < response.length; i++)
+        {
+            if (response[i].voucherMinPoints < rangeMax && response[i].voucherMinPoints <= localStorage.getItem("userPoints"))
+            {
+                var v = document.getElementById("vchrTypes");
+                v.innerHTML = `
+                
+                <div class="vchr row" style="justify-content: center;">
+    
+                <div class="col-sm-6">
+                  <div class="card">
+                    <div class="card-body" style="margin-top: 75px;">
+                      <h5 class="card-title">${response[i].voucherName}</h5>
+                      <p class="card-text">${response[i].voucherDesc}</p>
+                      <button onclick="ApplyVcherButton(${response[i].voucherValue})" class="${response[i]._id}" value="${response[i].voucherValue}" class="btn btn-primary">Apply Voucher</button>
+                    </div>
+                  </div>
+                </div>
+    
+              </div>
+                `;
+            }
+        }
+
+    }
+    else if (localStorage.getItem("userPoints") >= 900)
+    {
+        rangeMax = 100000000;
+        rangeMin = 900;
+        for (let i = 0; i < response.length; i++)
+        {
+            if (response[i].voucherMinPoints < rangeMax && response[i].voucherMinPoints <= localStorage.getItem("userPoints"))
+            {
+                var v = document.getElementById("vchrTypes");
+                v.innerHTML = `
+                
+                <div class="vchr row" style="justify-content: center;">
+    
+                <div class="col-sm-6">
+                  <div class="card">
+                    <div class="card-body" style="margin-top: 75px;">
+                      <h5 class="card-title">${response[i].voucherName}</h5>
+                      <p class="card-text">${response[i].voucherDesc}</p>
+                      <button onclick="ApplyVcherButton(${response[i].voucherValue})" class="${response[i]._id}" value="${response[i].voucherValue}" class="btn btn-primary">Apply Voucher</button>
+                    </div>
+                  </div>
+                </div>
+    
+              </div>
+    
+                `;
+            }
+        }
+    } 
+
+  });
+
+  
+function ApplyVcherButton(value)
+{
+
+    console.log(value);
+
+}
+
+//////////////////////////////
+//////////////////////////////
+//////////////////////////////
+//////////////////////////////
+// ORIGINAL CARTSCRIPT.JS CODE
+//////////////////////////////
+//////////////////////////////
+//////////////////////////////
+//////////////////////////////
+
 $( document ).ready(function() {
     var cartItems = localStorage.getItem("cartItem");
     cartItems = JSON.parse(cartItems);
