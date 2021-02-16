@@ -176,6 +176,8 @@
 <script type="text/javascript" src="phaser.min.js"></script>
 <script type="text/javascript">
 
+  $("#gamesProfiles").hide();
+
   const progress = document.querySelector('.progress-done');
   progress.innerHTML = localStorage.getItem("userPoints");
 
@@ -187,11 +189,6 @@
   document.getElementById('userMembership').innerHTML = `${localStorage.getItem("userMembership")}`;
   document.getElementById('userPoints').innerHTML = `${localStorage.getItem("userPoints")}`;
   document.getElementById('gameTokens').innerHTML = `${localStorage.getItem("userTokens")}`;
-
-  function inProgress() 
-  {
-    alert("STILL WORKING ON IT");
-  }
 
   function displayGames()
   {
