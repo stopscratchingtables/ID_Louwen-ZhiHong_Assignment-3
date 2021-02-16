@@ -1,3 +1,21 @@
+// Check Membership
+function checkMembership(points)
+{
+    if (points < 300)
+    {
+        return "Delta";
+    }
+    else if (points > 300 && points < 899)
+    {
+        return "Omega";
+    }
+    else if (points > 900)
+    {
+        return "Alpha";
+    }
+}
+
+
 // Avatar API
 
 function viewAvatarNav() {

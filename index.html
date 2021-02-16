@@ -170,11 +170,15 @@
 
     let email = $("#createEmail").val();
     let pass = $("#createPass").val();
-    //[STEP 3]: get form values when user clicks on send
-    //Adapted from restdb api
+    
     let jsondata = {
       "useremail": email,
-      "userpass": pass
+      "userpass": pass,
+      "userAvatar": "",
+      "userMembership": "Delta",
+      "userPoints": 0,
+      "friendsList": "",
+      "userTokens": 1,
     };
 
     console.log(jsondata);
