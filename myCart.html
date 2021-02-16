@@ -173,7 +173,6 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="script.js"></script>
 <script type="text/javascript" src="phaser.min.js"></script>
 <script type="text/javascript">
 
@@ -223,6 +222,49 @@
     afterGame(userID, hScore * 10);
 
   }
+
+  function afterGame(userID, newPoints)
+{
+
+    var prevPoints = localStorage.getItem("userPoints");
+    var memberResult = checkMembership(parseInt(prevPoints) + parseInt(newPoints))
+
+    var jsondata = {
+
+        "friendsList": localStorage.getItem("friendsList"),
+        "userAvatar": localStorage.getItem("userAvatar"),
+        "userMembership": memberResult,
+        "userPoints": parseInt(prevPoints) + parseInt(newPoints),
+        "useremail": localStorage.getItem("userName"),
+        "userpass": localStorage.getItem("userPass"),
+        "userTokens": parseInt(localStorage.getItem("userTokens")) - 1,
+      
+    };
+    var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://studentcrud-a7cf.restdb.io/rest/nonegoidassignment/" + userID,
+    "method": "PUT",
+    "headers": {
+        "content-type": "application/json",
+        "x-apikey": "5ffd5eb61346a1524ff12901",
+        "cache-control": "no-cache"
+    },
+    "processData": false,
+    "data": JSON.stringify(jsondata)
+    }
+
+    $.ajax(settings).done(function (response) {
+    console.log(response);
+    
+    localStorage.setItem("userTokens", localStorage.getItem("userTokens") - 1);
+    localStorage.setItem("userPoints", prevPoints + newPoints);
+    sessionStorage.clear();
+
+    refreshData();
+    });
+
+}
 
 
   // NOTE: Originally 640x1000. Other possible sizes: 512x800, 400x625
@@ -470,6 +512,7 @@
   
   
   </script>
+  <script src="script.js"></script>
   <script src="cartScript.js"></script>
 </body>
 </html>

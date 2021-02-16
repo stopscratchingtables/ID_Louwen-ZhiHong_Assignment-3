@@ -15,6 +15,44 @@ function checkMembership(points)
     }
 }
 
+function refreshData()
+{
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://studentcrud-a7cf.restdb.io/rest/nonegoidassignment",
+        "method": "GET",
+        "headers": {
+          "content-type": "application/json",
+          "x-apikey": "5ffd5eb61346a1524ff12901",
+          "cache-control": "no-cache"
+        }
+      }
+      
+      $.ajax(settings).done(function (response) {
+        console.log(response);
+        for (i=0; i < response.length; i++)
+        {
+            if (localStorage.getItem("userName") == response[i].useremail)
+            {
+            localStorage.setItem("userName", response[i].useremail);
+            localStorage.setItem("userID", response[i]._id);
+            localStorage.setItem("userPoints", response[i].userPoints);
+
+            var memberResult = checkMembership(response[i].userPoints);
+
+            localStorage.setItem("userMembership", memberResult);
+            localStorage.setItem("userAvatar", response[i].userAvatar);
+            localStorage.setItem("userTokens", response[i].userTokens);
+            localStorage.setItem("friendsList", response[i].friendsList);
+            localStorage.setItem("userPass", response[i].userpass);
+            }
+            else
+            {continue;}
+        }
+    
+      });
+}
 
 // Avatar API
 
@@ -361,32 +399,3 @@ $( document ).ready(function() {
     }
 
   });
-
-function afterGame(userID, newPoints)
-{
-
-    var prevPoints = localStorage.getItem("userPoints");
-
-    var jsondata = {"userTokens": parseInt(localStorage.getItem("userTokens")) - 1, "userPoints": parseInt(prevPoints + newPoints)};
-    var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "https://studentcrud-a7cf.restdb.io/rest/nonegoidassignment/" + userID,
-    "method": "PUT",
-    "headers": {
-        "content-type": "application/json",
-        "x-apikey": "5ffd5eb61346a1524ff12901",
-        "cache-control": "no-cache"
-    },
-    "processData": false,
-    "data": JSON.stringify(jsondata)
-    }
-
-    $.ajax(settings).done(function (response) {
-    console.log(response);
-    localStorage.setItem("userTokens" - 1);
-    localStorage.setItem("userPoints", prevPoints + newPoints);
-    sessionStorage.clear();
-    });
-
-}

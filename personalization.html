@@ -172,7 +172,7 @@
               <input type="password" class="form-control" id="inputPass" placeholder="Password">
             </div>
           </form>
-          <button class="btn btn-primary" id="">Make Changes</button>
+          <button class="btn btn-primary"  onclick="makeChanges()">Make Changes</button>
 
           <!-- Dark mode switch -->
           <div class="form-check form-switch pt-5">
@@ -201,7 +201,7 @@
               
             </div>
             <button id="afBtn" onclick="AddFriend()" type="button" class="btn btn-success">Add Friend</button>
-            <button id="dfBtm" onclick="DeleteFriend()" type="button" class="btn btn-danger">Delete Friend</button>
+            <button id="dfBtn" onclick="DeleteFriend()" type="button" class="btn btn-danger">Delete Friend</button>
           </div>
 
           <div id="addFriendTab">
@@ -392,6 +392,7 @@ function cfmDelFriends()
   }
 
   var newFriends = friendsList.toString();
+  localStorage.setItem("friendsList", newFriends);
   UpdateFriendsList(newFriends);
 
 }
@@ -435,6 +436,7 @@ submitNewFriends.addEventListener("click", function()
       {
         friendsList.push(x.value);
         newFriends = friendsList.toString();
+        localStorage.setItem("friendsList", newFriends);
         UpdateFriendsList(newFriends);
       }
 
@@ -470,29 +472,79 @@ function CheckFriendInList(friendsList, inputEmail)
 
 function UpdateFriendsList(newFriends)
 {
-  
-  var userID = localStorage.getItem("userID");
-  var jsondata = {"friendsList": newFriends};
-  var settings = {
+console.log(newFriends);
+
+    var jsondata = {
+        "friendsList": newFriends,
+        "userAvatar": localStorage.getItem("userAvatar"),
+        "userMembership": localStorage.getItem("userMembership"),
+        "userPoints": localStorage.getItem("userPoints"),
+        "useremail": localStorage.getItem("userName"),
+        "userpass": localStorage.getItem("userPass"),
+        "userTokens": localStorage.getItem("userTokens"),
+    };
+    var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "https://studentcrud-a7cf.restdb.io/rest/nonegoidassignment/" + userID,
+    "url": "https://studentcrud-a7cf.restdb.io/rest/nonegoidassignment/" + localStorage.getItem("userID"),
     "method": "PUT",
     "headers": {
       "content-type": "application/json",
       "x-apikey": "5ffd5eb61346a1524ff12901",
       "cache-control": "no-cache"
-    },
-    "processData": false,
-    "data": JSON.stringify(jsondata)
-  }
+        },
+        "processData": false,
+        "data": JSON.stringify(jsondata)
+    }
 
   $.ajax(settings).done(function (response) {
     console.log(response);
+
+    $('#deleteFriendTab').hide();
+    $('#cfmDelFriends').hide();
+    $('#addFriendForm').hide();
+    $('#submitAddFriends').hide();
+    alert("Refresh Page once again to get updated friendsList");
   });
 }
+
+function makeChanges()
+{
+    var changeEmail = document.getElementById("inputEmail").value;
+    var changePass = document.getElementById("inputPass").value;
+
+    var jsondata = {
+        "friendsList": localStorage.getItem("friendsList"),
+        "userAvatar": localStorage.getItem("userAvatar"),
+        "userMembership": localStorage.getItem("userMembership"),
+        "userPoints": localStorage.getItem("userPoints"),
+        "useremail": changeEmail,
+        "userpass": changePass,
+        "userTokens": localStorage.getItem("userTokens"),
+        };
+        var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://studentcrud-a7cf.restdb.io/rest/nonegoidassignment/" + localStorage.getItem("userID"),
+        "method": "PUT",
+        "headers": {
+        "content-type": "application/json",
+        "x-apikey": "5ffd5eb61346a1524ff12901",
+        "cache-control": "no-cache"
+            },
+            "processData": false,
+            "data": JSON.stringify(jsondata)
+        }
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+        refreshData();
+        alert("Refresh Page once again to get updated Account Details");
+    });
+
+}
+
 
   </script>
 </body>
 </html>
-
