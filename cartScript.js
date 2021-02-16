@@ -34,7 +34,7 @@
                     <div class="card-body" style="margin-top: 75px;">
                       <h5 class="card-title">${response[i].voucherName}</h5>
                       <p class="card-text">${response[i].voucherDesc}</p>
-                      <button onclick="ApplyVcherButton(${response[i].voucherValue}, ${response[i].voucherCat}, ${response[i].voucherMinValue})" class="${response[i]._id}" value="${response[i].voucherValue}" class="btn btn-primary">Apply Voucher</button>
+                      <button onclick="ApplyVcherButton(${response[i].voucherValue}, ${response[i].voucherMinValue})" class="${response[i]._id}" value="${response[i].voucherValue}" class="btn btn-primary">Apply Voucher</button>
                     </div>
                   </div>
                 </div>
@@ -62,7 +62,7 @@
                     <div class="card-body" style="margin-top: 75px;">
                       <h5 class="card-title">${response[i].voucherName}</h5>
                       <p class="card-text">${response[i].voucherDesc}</p>
-                      <button onclick="ApplyVcherButton(${response[i].voucherValue}, ${response[i].voucherCat}, ${response[i].voucherMinValue})" class="${response[i]._id}" value="${response[i].voucherValue}" class="btn btn-primary">Apply Voucher</button>
+                      <button onclick="ApplyVcherButton(${response[i].voucherValue}, ${response[i].voucherMinValue})" class="${response[i]._id}" value="${response[i].voucherValue}" class="btn btn-primary">Apply Voucher</button>
                     </div>
                   </div>
                 </div>
@@ -91,7 +91,7 @@
                     <div class="card-body" style="margin-top: 75px;">
                       <h5 class="card-title">${response[i].voucherName}</h5>
                       <p class="card-text">${response[i].voucherDesc}</p>
-                      <button onclick="ApplyVcherButton(${response[i].voucherValue}, ${response[i].voucherCat}, ${response[i].voucherMinValue})" class="${response[i]._id}" value="${response[i].voucherValue}" class="btn btn-primary">Apply Voucher</button>
+                      <button onclick="ApplyVcherButton(${response[i].voucherValue}, ${response[i].voucherMinValue})" class="${response[i]._id}" value="${response[i].voucherValue}" class="btn btn-primary">Apply Voucher</button>
                     </div>
                   </div>
                 </div>
@@ -106,11 +106,18 @@
   });
 
   
-function ApplyVcherButton(value, category)
+function ApplyVcherButton(value,minValue)
 {
-
-    console.log(value);
-
+  console.log(minValue);
+  var cartTotal = parseFloat($(".cartTotal").text());
+  console.log(cartTotal - (cartTotal * value/100))
+  if ((cartTotal - (cartTotal * value/100)) < minValue) {
+    alert("Final Amount is too little after using the voucher please buy more stuff")
+  }
+  else {
+    var newCartTotal = cartTotal - (cartTotal * value/100)
+    $(".cartTotal").text(newCartTotal);
+  }
 }
 
 //////////////////////////////
@@ -222,12 +229,18 @@ $( document ).ready(function() {
       }
       function Purchase() {
           $(".purchase").click(function(){
-              console.log("working")
-              alert(("your purchase of $" + CalcCartTotal() + " is succesful"))
-              $(".itemContainer").remove()
-              CalcCartTotal();
-              localStorage.removeItem("cartItem")
+            var totalItems = 0
+            $(".qty").each(function(){
+            console.log($(this).text())
+            totalItems += parseFloat($(this).html())
           })
+          AddToken(totalItems);
+          console.log(totalItems)
+          alert(("your purchase of $" + $(".cartTotal").text() + " is succesful"))
+          $(".itemContainer").remove()
+          CalcCartTotal();
+          localStorage.removeItem("cartItem")
+        })
       }
       DisplayCartItems(cartItems);
       RemoveItem(); 

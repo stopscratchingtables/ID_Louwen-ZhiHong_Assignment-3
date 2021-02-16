@@ -266,7 +266,7 @@ $( document ).ready(function() {
         this.title = title;
         this.price = price;
     }
-      var addToCartButtons = $(".purchase")
+      var addToCartButtons = $(".addToCart")
       for (var i = 0; i < addToCartButtons.length; i++)
       {
         var button = addToCartButtons[i]
