@@ -42,8 +42,8 @@
       </div>
     </div>
     <div class="row d-flex justify-content-center">
-        <div id="AvtarPicSpace" class="col-3 bg-secondary">
-          <img id="sampleAvatar"src="https://gutta.lv/wp-content/uploads/2015/10/test-img.jpg" class="card-img-top" id="prodImg2" alt="...">
+        <div id="AvtarPicSpace" class="col-3 bg-secondary" style="justify-content: center;">
+          <img id="sampleAvatar" src="https://gutta.lv/wp-content/uploads/2015/10/test-img.jpg" class="card-img-top" id="prodImg2" alt="...">
         </div>
 
 
@@ -66,7 +66,7 @@
                             <a href="#" onclick="avGender()" class="nav-link text-dark">Gender</a>
                         </li>
                         <li class="nav-item">
-                          <a href="#" onclick="avExpression()" class="nav-link text-dark">Expressions</a>
+                          <a href="#" onclick="avAssets()" class="nav-link text-dark">Assets</a>
                       </li>
                         <li class="nav-item">
                             <a href="#" onclick="avSkin()" class="nav-link text-dark">Skin</a>
@@ -81,7 +81,7 @@
 
 
           <!-- Gender -->
-          <section id="CavatarGender" style="margin-top: 60px;">
+          <section id="CavatarGender" style="margin-top: 60px; color: wheat;">
             <div class="form-check">
               <label class="form-check-label">
                 <input type="radio" id="avatarGMale" class="form-check-input" name="optradio" value="male">Male
@@ -97,17 +97,9 @@
 
         <!-- Skin -->
         <section id="CavatarSkin" style="margin-top: 60px;">
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Skin Colour
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </div>
-          <button id="AvatardarkBrownSkin">Test Skin Color (Dark Brown)</button>
+          <button id="AvatardarkBrownSkin">Dark Brown</button><br>
+          <button id="AvatarlightBrownSkin">Light Brown</button><br>
+          <button id="AvatarfairSkin">Fair</button>
         </section>
 
         <!-- Hair -->
@@ -136,19 +128,11 @@
           <button>Test Hair Color</button>
         </section>
 
-        <!-- Expressions -->
+        <!-- Glasses -->
         <section id="CavatarExpressions" style="margin-top: 60px;">
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Expression Types
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </div>
-          <button id="AvatarAngry">Test Expression</button>
+          <button onclick="EditAvatarAsset('123', localStorage.getItem('AvatarKey'))" id="AvatarAviatorGlasses">Aviator Glasses</button><br>
+          <button onclick="EditAvatarAsset('124', localStorage.getItem('AvatarKey'))" id="Wraps">Wraps</button><br>
+          <button onclick="EditAvatarAsset('125', localStorage.getItem('AvatarKey'))" id="BigGlasses">Big Glasses</button><br>
         </section>
 
         <div id="cfmAvatar" style="margin-top: 60px;">
@@ -277,19 +261,13 @@
     });
 
     ///////////////////////////////////////
-    function avExpression()
+    function avAssets()
     {
       $('#CavatarExpressions').show();
       $('#CavatarGender').hide();
       $('#CavatarSkin').hide();
       $('#CavatarHair').hide();
     }
-
-    document.getElementById("AvatarAngry").addEventListener("click", function()
-    { 
-      let aCode = localStorage.getItem("AvatarKey");
-      EditAvatarAsset("3", aCode);
-    });
 
     ///////////////////////////////////////
     function avSkin()
@@ -304,6 +282,19 @@
       let aCode = localStorage.getItem("AvatarKey");
       EditAvatarSkin("8D5524", aCode);
     });
+    document.getElementById("AvatarlightBrownSkin").addEventListener("click", function()
+    { 
+      let aCode = localStorage.getItem("AvatarKey");
+      EditAvatarSkin("f1c27d", aCode);
+    });
+    document.getElementById("AvatarfairSkin").addEventListener("click", function()
+    { 
+      let aCode = localStorage.getItem("AvatarKey");
+      EditAvatarSkin("ffdbac", aCode);
+    });
+
+
+
     ///////////////////////////////////////
 
     function avHair()

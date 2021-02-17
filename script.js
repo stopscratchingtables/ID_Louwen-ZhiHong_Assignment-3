@@ -115,7 +115,7 @@ function createAvatar(gCode) {
         var img = document.createElement('img');
         img.src = imageurl
         $('#sampleAvatar').hide();
-        document.getElementById("AvtarPicSpace").innerHTML = ('<img id="avatarPic" src="' + img.src + '"></img>');
+        document.getElementById("AvtarPicSpace").innerHTML = ('<img id="avatarPic" style="margin-top: 60px; margin-left: 60px;" src="' + img.src + '"></img>');
 
         var editSkinButton = ` <button onclick="EditAvatarSkin()">Edit Skin</button> `;
         var editAssetButton = ` <button onclick="EditAvatarAsset()">Edit Asset</button> `;
@@ -158,7 +158,7 @@ function EditAvatarSkin(sCode, aCode)
         
         document.getElementById("avatarPic").remove();
 
-        document.getElementById("AvtarPicSpace").innerHTML += ('<img id="avatarPic" src="' + refedImage + '"></img>');
+        document.getElementById("AvtarPicSpace").innerHTML += ('<img id="avatarPic" style="margin-top: 60px; margin-left: 60px;" src="' + refedImage + '"></img>');
 
     })
     .catch(err => {
@@ -168,18 +168,18 @@ function EditAvatarSkin(sCode, aCode)
 }
 
 function EditAvatarAsset(eCode, aCode) {
-/*
-1 - Wink
-3 - Angry
-5 - Sleepy
-67 - Smiling
-69 - Sad
-73 - Surprised
-186 - Grin
-200 - Tounge
-243 - Embarassed
-247 - Vampire
-*/
+
+    /*
+    123 - Aviator Glasses
+    124 - Wraps
+    125 - Big Glasses
+
+
+    13 - cute princess
+    18 - short bob
+    76 - curly
+    */
+
 
     fetch("https://doppelme-avatars.p.rapidapi.com/avatar/" + aCode + "/" + eCode, {
         "method": "PUT",
@@ -188,9 +188,7 @@ function EditAvatarAsset(eCode, aCode) {
             "x-rapidapi-host": "doppelme-avatars.p.rapidapi.com"
         }
     })
-    .then(response => {
-        console.log(response);
-    })
+    .then(response => response.json())
     .then(data => {
         console.log(data);
         console.log("Thumbnail SRC: " + data.thumbnailSrc);
@@ -198,7 +196,13 @@ function EditAvatarAsset(eCode, aCode) {
         var imageurl_Skin = data.thumbnailSrc;
         var img = document.createElement('img');
         img.src = imageurl_Skin
-        document.getElementById("AvtarPicSpace").innerHTML += ('<img id="avatarPic" src="' + img.src + '"></img>');
+
+
+        var refedImage = refreshImage("avatarPic", data.thumbnailSrc);
+        document.getElementById("avatarPic").remove();
+
+
+        document.getElementById("AvtarPicSpace").innerHTML += ('<img id="avatarPic" style="margin-top: 60px; margin-left: 60px;" src="' + refedImage + '"></img>');
     })
     .catch(err => {
         console.error(err);
@@ -254,25 +258,6 @@ function DeleteAvatar() {
 
 }
 
-function EditAvatarAsset()
-{
-    var avatarKey = localStorage.getItem("AvatarKey");
-    
-    fetch("https://doppelme-avatars.p.rapidapi.com/avatar/" + doppleme_key + "/" + assetID, {
-	"method": "PUT",
-	"headers": {
-		"x-rapidapi-key": "7ef7505eeemsh4b7ae28b990ec32p10a9e5jsnf404942f045e",
-		"x-rapidapi-host": "doppelme-avatars.p.rapidapi.com"
-	}
-    })
-    .then(response => {
-        console.log(response);
-    })
-    .catch(err => {
-        console.error(err);
-    });
-    
-}
 
 $( document ).ready(function() {
     var cartArray = []
