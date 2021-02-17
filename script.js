@@ -59,7 +59,9 @@ function refreshData()
             localStorage.setItem("userPass", response[i].userpass);
             }
             else
-            {continue;}
+            {
+                continue;
+            }
         }
     
       });
@@ -70,8 +72,28 @@ function refreshData()
 function viewAvatarNav() {
 
     $('#CreatAvtarButton').hide();
-    $('#CavtarNavBar').show();
+    if (localStorage.getItem("userAvatar") != "" )
+    {
+        $('#overridePrevAvatar').show();
+    }
+    else if (localStorage.getItem("userAvatar") == "")
+    {
+        $('#CavtarNavBar').show();
+        $('#cfmAvatar').show();
+    }
 
+}
+
+function overrideNo()
+{
+    $('#overridePrevAvatar').hide();
+}
+
+function overrideYes()
+{
+    $('#overridePrevAvatar').hide();
+    $('#CavtarNavBar').show();
+    $('#cfmAvatar').show();
 }
     
 function createAvatar(gCode) {

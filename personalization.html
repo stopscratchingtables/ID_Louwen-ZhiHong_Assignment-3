@@ -51,6 +51,12 @@
 
           <button style="margin-top: 12.5%;" id="CreatAvtarButton" onclick="viewAvatarNav()">Click Here To Create Avatar</button>
 
+          <section id="overridePrevAvatar">
+            <h3 class="text-light">Would you like to Override Your Current Avatar?</h3>
+            <button class="btn btn-success" onclick="overrideNo()">No</button>
+            <button class="btn btn-danger " onclick="overrideYes()">Yes</button>
+          </section>
+
           <!-- Edit/Create Avtar Nav Bar -->
           <nav id="CavtarNavBar"class="navbar navbar-expand-lg navbar-light bg-white">
             <div class="container-fluid">
@@ -73,8 +79,9 @@
               </div>
           </nav>
 
+
           <!-- Gender -->
-          <section id="CavatarGender">
+          <section id="CavatarGender" style="margin-top: 60px;">
             <div class="form-check">
               <label class="form-check-label">
                 <input type="radio" id="avatarGMale" class="form-check-input" name="optradio" value="male">Male
@@ -89,7 +96,7 @@
 
 
         <!-- Skin -->
-        <section id="CavatarSkin">
+        <section id="CavatarSkin" style="margin-top: 60px;">
           <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Skin Colour
@@ -104,7 +111,7 @@
         </section>
 
         <!-- Hair -->
-        <section id="CavatarHair">
+        <section id="CavatarHair" style="margin-top: 60px;">
           <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Hair Type
@@ -130,7 +137,7 @@
         </section>
 
         <!-- Expressions -->
-        <section id="CavatarExpressions">
+        <section id="CavatarExpressions" style="margin-top: 60px;">
           <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Expression Types
@@ -143,6 +150,11 @@
           </div>
           <button id="AvatarAngry">Test Expression</button>
         </section>
+
+        <div id="cfmAvatar" style="margin-top: 60px;">
+            <button class="btn btn-dark">Finalise Avatar</button>
+        </div>
+
         </div>
 
     </div>
@@ -237,6 +249,8 @@
     $('#submitAddFriends').hide();
     $('#deleteFriendTab').hide();
     $('#cfmDelFriends').hide();
+    $('#overridePrevAvatar').hide();
+    $('#cfmAvatar').hide();
 
     $('#CavtarNavBar').hide();
     
@@ -300,7 +314,7 @@
       $('#CavatarExpressions').hide();
     }
 
-  // DISPLAYING FRIENDS LIST
+// DISPLAYING FRIENDS LIST
 var friendsList = localStorage.getItem("friendsList").split(",");
 
 var settings = {
