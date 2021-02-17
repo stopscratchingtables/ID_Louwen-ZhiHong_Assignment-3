@@ -49,7 +49,7 @@
 
         <div class="col-5 text-center bg-primary">
 
-          <button id="CreatAvtarButton" onclick="viewAvatarNav()">Click Here To Create Avatar</button>
+          <button style="margin-top: 12.5%;" id="CreatAvtarButton" onclick="viewAvatarNav()">Click Here To Create Avatar</button>
 
           <!-- Edit/Create Avtar Nav Bar -->
           <nav id="CavtarNavBar"class="navbar navbar-expand-lg navbar-light bg-white">
@@ -172,7 +172,7 @@
               <input type="password" class="form-control" id="inputPass" placeholder="Password">
             </div>
           </form>
-          <button class="btn btn-primary"  onclick="makeChanges()">Make Changes</button>
+          <button class="btn btn-success" onclick="makeChanges()">Make Changes</button>
 
           <!-- Dark mode switch -->
           <div class="form-check form-switch pt-5">
@@ -186,7 +186,7 @@
 
               <table class="table">
                 <thead>
-                  <tr>
+                  <tr class="table-info">
                     <th>Avatar</th>
                     <th scope="col">Email</th>
                     <th scope="col">Membership</th>
@@ -326,7 +326,7 @@ var settings = {
         if (friendsList[i] == response[x].useremail)
         {
           document.getElementById("friendsTable").innerHTML += 
-          `<tr>
+          `<tr class="table-info">
               <th scope="row">${response[x].userAvatar}</th>
               <td>${response[x].useremail}</td>
               <td>${response[x].userMembership}</td>

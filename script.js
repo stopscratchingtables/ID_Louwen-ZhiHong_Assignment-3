@@ -1,4 +1,15 @@
 // Check Membership
+function refreshImage(imgElement, imgURL){    
+    // create a new timestamp 
+    var timestamp = new Date().getTime();  
+  
+    var el = document.getElementById(imgElement);  
+  
+    var queryString = "?t=" + timestamp;    
+  
+    return el.src = imgURL + queryString;    
+} 
+
 function checkMembership(points)
 {
     if (points < 300)
@@ -111,13 +122,22 @@ function EditAvatarSkin(sCode, aCode)
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data);
-        console.log("Thumbnail SRC: " + data.thumbnailSrc);
+
+        console.log("New Second Avatar: " + data.thumbnailSrc);
+
+        localStorage.removeItem("avatarPic");
+        localStorage.setItem("avatarPic", data.thumbnailSrc);
 
         var imageurl_Skin = data.thumbnailSrc;
         var img = document.createElement('img');
         img.src = imageurl_Skin
-        document.getElementById("AvtarPicSpace").innerHTML += ('<img id="avatarPic" src="' + img.src + '"></img>');
+
+        var refedImage = refreshImage("avatarPic", data.thumbnailSrc);
+        
+        document.getElementById("avatarPic").remove();
+
+        document.getElementById("AvtarPicSpace").innerHTML += ('<img id="avatarPic" src="' + refedImage + '"></img>');
+
     })
     .catch(err => {
         console.error(err);

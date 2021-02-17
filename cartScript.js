@@ -27,13 +27,13 @@
                 var v = document.getElementById("vchrTypes");
                 v.innerHTML += `
                 
-                <div class="vchr row" style="justify-content: center;">
+                <div class="vchr row pt-5" style="justify-content: center;">
     
-                <div class="col-sm-6">
-                  <div class="card">
+                <div class="col-sm-6 mb-5" style="width: 75%;">
+                  <div class="card bg-secondary text-light">
                     <div class="card-body" style="margin-top: 75px;">
                       <h5 class="card-title">${response[i].voucherName}</h5>
-                      <p class="card-text">${response[i].voucherDesc}</p>
+                      <p class="card-text">${response[i].voucherDesc} <br> Voucher Value: ${response[i].voucherValue}%</p>
                       <button onclick="ApplyVcherButton(${response[i].voucherValue}, ${response[i].voucherMinValue})" value="${response[i].voucherValue}" class="btn btn-primary vouchButton">Apply Voucher</button>
                     </div>
                   </div>
