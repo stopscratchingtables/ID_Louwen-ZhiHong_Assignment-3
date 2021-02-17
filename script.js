@@ -311,3 +311,15 @@ $( document ).ready(function() {
       })
       });
 });
+
+function CheckUserExists(response, inputEmail)
+{
+  for (let i = 0; i < response.length; i++)
+  {
+    if (response[i].useremail === inputEmail)
+    {
+      return 1;
+    }
+  }
+  return 2;
+}

@@ -10,6 +10,16 @@
 </head>
 <body>
 
+  <div class="loadingLottie" style="margin-top: 55px;">
+    <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_r63rTC.json"  background="transparent"  speed="1"  style="width: 600px; height: 600px;"    autoplay></lottie-player>
+  </div>
+  <div class="wrongPassLottie" style="margin-top: 75px;">
+    <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_h3Bz5a.json"  background="transparent"  speed="1"  style="width: 500px; height: 500px;"  loop  autoplay></lottie-player>
+  </div>
+  <div class="successLottie" style="margin-top: 75px;">
+    <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_tAtUrg.json"  background="transparent"  speed="1"  style="width: 500px; height: 500px;"  loop  autoplay></lottie-player>
+  </div>
+
   <section id="signIn">
     <div class='container mx-auto mt-5 col-md-10 mt-100'>
       <div class="row" style="justify-content: center">
@@ -32,8 +42,8 @@
                             <input type="password" class="form-control" id="inputPass" placeholder="Password">
                           </div>
                         </form>
-                        <button class="btn btn-primary" id="LogInButton">Log In</button>
-                        <h2 onclick="signUp()">Click Here To Sign Up</h2>
+                        <button class="btn" id="LogInButton">Log In</button>
+                        <button class="btn" onclick="signUp()">Click Here To Sign Up</h2>
                       </div>
                   </div>
 
@@ -88,8 +98,12 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
 <script src="script.js"></script>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 <script>
+  $(".loadingLottie").hide();
   $(".signUp").hide();
+  $(".wrongPassLottie").hide();
+  $('.successLottie').hide();
 
   var settings = {
     "async": true,
@@ -116,15 +130,46 @@
 
       if (i === 1)
       {
-        redirectHomePage();
+
+        $('#signIn').hide();
+        $('.loadingLottie').show();
+
+        setTimeout(loadScreen, 3000);
+        
+        function loadScreen(){
+          redirectHomePage();
+        }
+
       }
       else if (i === 2)
       {
-        alert("Wrong Password");
+
+        $('#signIn').hide();
+        $('.wrongPassLottie').show();
+
+        setTimeout(loadScreen, 3000);
+        
+        function loadScreen(){
+          $('#signIn').show();
+          $('.wrongPassLottie').hide();
+          alert("Wrong Password");
+        }
+
       }
       else
       {
-        alert("ACCOUNT DOES NOT EXIST");
+
+        $('#signIn').hide();
+        $('.wrongPassLottie').show();
+
+        setTimeout(loadScreen, 3000);
+        
+        function loadScreen(){
+          $('#signIn').show();
+          $('.wrongPassLottie').hide();
+          alert("ACCOUNT DOES NOT EXIST");
+        }
+
       }
 
     });
@@ -163,16 +208,55 @@
 
   function signUp()
   {
+
     $(".signUp").show();
+
   }
+
 
   $("#SignUpButton").on("click", function (e) {
     e.preventDefault();
 
     let email = $("#createEmail").val();
     let pass = $("#createPass").val();
-    
-    let jsondata = {
+
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "https://studentcrud-a7cf.restdb.io/rest/nonegoidassignment",
+      "method": "GET",
+      "headers": {
+        "content-type": "application/json",
+        "x-apikey": "5ffd5eb61346a1524ff12901",
+        "cache-control": "no-cache"
+      }
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+      var result = CheckUserExists(response, email)
+
+    if (result == 1)
+    {
+
+      $('.signUp').hide();
+      $('#signIn').hide();
+      $('.wrongPassLottie').show();
+
+      setTimeout(loadScreen, 3000);
+        
+      function loadScreen(){
+        $('#signIn').show();
+        $('.wrongPassLottie').hide();
+        $('.signUp').hide();
+        alert("This Account Already Exists");
+      }
+
+    }
+    else if (result == 2)
+    {
+
+      let jsondata = {
       "useremail": email,
       "userpass": pass,
       "userAvatar": "",
@@ -180,34 +264,51 @@
       "userPoints": 0,
       "friendsList": "",
       "userTokens": 1,
-    };
+      };
 
-    console.log(jsondata);
 
-    let settings = {
-      "async": true,
-      "crossDomain": true,
-      "url": "https://studentcrud-a7cf.restdb.io/rest/nonegoidassignment",
-      "method": "POST",
-      "headers": {
-        "content-type": "application/json",
-        "x-apikey": '5ffd5eb61346a1524ff12901',
-        "cache-control": "no-cache"
-      },
-      "processData": false,
-      "data": JSON.stringify(jsondata),
-      "beforeSend": function(){
-        $("#SignUpButton").prop("disabled", true);
-        
-      }
+      let settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://studentcrud-a7cf.restdb.io/rest/nonegoidassignment",
+        "method": "POST",
+        "headers": {
+          "content-type": "application/json",
+          "x-apikey": '5ffd5eb61346a1524ff12901',
+          "cache-control": "no-cache"
+        },
+          "processData": false,
+          "data": JSON.stringify(jsondata),
+          "beforeSend": function(){
+            $("#SignUpButton").prop("disabled", true);
+            
+          }
+        }
+
+        $.ajax(settings).done(function (response) {
+          console.log(response);
+
+          $('.signUp').hide();
+          $('#signIn').hide();
+          $('.successLottie').show();
+
+          setTimeout(loadScreen, 3000);
+              
+          function loadScreen(){
+            $('#signIn').show();
+            $('.successLottie').hide();
+            $('.signUp').hide();
+          }
+
+        });
+      
     }
 
-    $.ajax(settings).done(function (response) {
-      console.log(response);
-      
-      $("#SignUpButton").prop( "disabled", false);
     });
+    
   }); 
+
+
 
 
 </script>
