@@ -293,16 +293,10 @@ $( document ).ready(function() {
         this.title = title;
         this.price = price;
     }
-      var addToCartButtons = $(".addToCart")
-      for (var i = 0; i < addToCartButtons.length; i++)
-      {
-        var button = addToCartButtons[i]
-        button.addEventListener("click", addToCart);
-      }
-      $(".prodType").hide();
+    function ProdTypeSearch() {
+        $(".prodType").hide();
       $(".prodTypeSearch").change(function(){
         $(".prodType").each(function(){
-            console.log($(this).html())
             if ($(".prodTypeSearch").val() == "all") {
                 if ($(this).parent().parent().parent().is(":hidden")) {
                     $(this).parent().parent().parent().show();   
@@ -317,6 +311,30 @@ $( document ).ready(function() {
             }
       })
       });
+    }
+    function ProdSearch() {
+        $(".userInput").keyup(function(){
+            var value = $(this).val();
+            var valueFilter = value.toLowerCase();
+            $(".prodTitle").each(function(){
+                var title = $(this).text();
+                if (title.toLowerCase().indexOf(valueFilter) !== -1) {
+                    $(this).parent().parent().show()
+                }
+                else {
+                    $(this).parent().parent().hide()
+                }
+            })
+        })
+    }
+      var addToCartButtons = $(".addToCart")
+      for (var i = 0; i < addToCartButtons.length; i++)
+      {
+        var button = addToCartButtons[i]
+        button.addEventListener("click", addToCart);
+      }
+      ProdTypeSearch();
+      ProdSearch();
 });
 
 function CheckUserExists(response, inputEmail)
