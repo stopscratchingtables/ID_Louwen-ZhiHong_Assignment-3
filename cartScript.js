@@ -46,11 +46,10 @@
     }
     else if (localStorage.getItem("userPoints") >= 300 && localStorage.getItem("userPoints") < 900)
     {
-        rangeMax = 900;
         rangeMin = 300;
         for (let i = 0; i < response.length; i++)
         {
-            if (response[i].voucherMinPoints < rangeMax && response[i].voucherMinPoints <= localStorage.getItem("userPoints"))
+            if (response[i].voucherMinPoints >= rangeMin && response[i].voucherMinPoints <= localStorage.getItem("userPoints"))
             {
                 var v = document.getElementById("vchrTypes");
                 v.innerHTML = `
@@ -61,7 +60,7 @@
                   <div class="card">
                     <div class="card-body" style="margin-top: 75px;">
                       <h5 class="card-title">${response[i].voucherName}</h5>
-                      <p class="card-text">${response[i].voucherDesc}</p>
+                      <p class="card-text">${response[i].voucherDesc} <br> Voucher Value: ${response[i].voucherValue}%</p>
                       <button onclick="ApplyVcherButton(${response[i].voucherValue}, ${response[i].voucherMinValue})" value="${response[i].voucherValue}" class="btn btn-primary vouchButton">Apply Voucher</button>
                     </div>
                   </div>
@@ -90,7 +89,7 @@
                   <div class="card">
                     <div class="card-body" style="margin-top: 75px;">
                       <h5 class="card-title">${response[i].voucherName}</h5>
-                      <p class="card-text">${response[i].voucherDesc}</p>
+                      <p class="card-text">${response[i].voucherDesc} <br> Voucher Value: ${response[i].voucherValue}%</p>
                       <button onclick="ApplyVcherButton(${response[i].voucherValue}, ${response[i].voucherMinValue})" value="${response[i].voucherValue}" class="btn btn-primary vouchButton">Apply Voucher</button>
                     </div>
                   </div>
