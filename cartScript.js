@@ -30,7 +30,7 @@
                 <div class="vchr row pt-5" style="justify-content: center;">
     
                 <div class="col-sm-6 mb-5" style="width: 75%;">
-                  <div class="card bg-secondary text-light">
+                  <div class="card bg-ash">
                     <div class="card-body" style="margin-top: 75px;">
                       <h5 class="card-title">${response[i].voucherName}</h5>
                       <p class="card-text">${response[i].voucherDesc} <br> Voucher Value: ${response[i].voucherValue}%</p>

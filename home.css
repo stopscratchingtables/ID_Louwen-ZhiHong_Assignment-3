@@ -1,11 +1,37 @@
+body{
+
+	background-image: url(media/LoginForumBG.jpeg);
+	background-size: cover;
+	background-attachment: fixed;
+	animation: transitionIn 0.75s;
+
+	overflow-x: hidden;
+}
+
+.bg-dandelion {
+	background: rgb(232,196,82);
+	background: linear-gradient(90deg, rgba(232,196,82,1) 0%, rgba(214,189,90,1) 50%, rgba(232,196,82,1) 100%);
+}
+
+.bg-carbon {
+	background-color: #42413D;
+}
+
+.bg-ash {
+	background-color: #B2AFAC;
+}
+
+.bg-dust{
+	background-color: #959492;
+}
+
 #prodSearch {
-    padding-top: 60%;
     position: relative;
-    left: 40%;
+    left: 10%;
 }
 #prodType {
     position: relative;
-    left: 40%;
+    left: 10%;
 }
 
 .slideShow {
@@ -22,7 +48,7 @@
 }
 
 .progress-done {
-	background: linear-gradient(to left, #F2709C, #FF9472);
+	background: linear-gradient(90deg, rgba(232,107,82,1) 2%, rgba(214,164,90,1) 39%, rgba(232,159,82,1) 83%);
 	box-shadow: 0 3px 3px -5px #F2709C, 0 2px 5px #F2709C;
 	border-radius: 20px;
 	color: #fff;
@@ -34,3 +60,36 @@
 	opacity: 0;
 	transition: 1s ease 0.3s;
 }
+
+.card:hover {
+	box-shadow: 0 0 15px rgba(33,33,33,.2); 
+}
+
+.shopLogo {
+	text-align: right;
+}
+
+.shopLogo > h1 {
+	font-size: 75px;
+}
+
+@media only screen 
+    and (device-height : 880px) 
+	{ 
+
+		.shopLogo > h1 {
+			font-size: 50px;
+		}
+
+	}
+
+@media only screen 
+    and (device-width : 375px) 
+    and (-webkit-device-pixel-ratio : 3) 
+	{ 
+
+		.shopLogo > h1 {
+			font-size: 60px;
+		}
+
+	}

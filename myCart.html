@@ -10,23 +10,18 @@
 <body>
 
 <!-- 
-
   =====[Point System]=====
   Delta - 0 to 299
   Omega - 300 to 899
   Alpha - 900 and above
-
   Every Item Purchased = 2 tokens
   Each token = Play Game
   Play Game = Earn Points
   Points = Get Vouchers
-
-
-
 -->
 
   <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light bg-carbon">
         <div class="container-fluid">
             <a class="navbar-brand fs-2 text-white" href="#">NoNego!</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,10 +30,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto fs-4">
                     <li class="nav-item">
-                        <a href="#" class="nav-link active text-white" aria-current="page">Home</a>
+                        <a href="home.html" class="nav-link active text-white" aria-current="page">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="home.html" class="nav-link text-white">Shop</a>
+                        <a href="home.html#shop" class="nav-link text-white">Shop</a>
                     </li>
                     <li class="nav-item">
                         <a href="personalization.html" class="nav-link text-white">My Account</a>
@@ -60,7 +55,7 @@
                 <div class="card-content">
                     <div class="card-body p-0">
                         <div class="profile"> <img src="media/shoppingCart.png"> </div>
-                        <div class="card-subtitle  cartAppend">
+                        <div class="card-subtitle cartAppend">
                         </div>
                         <div class="row">
                           <div class="col d-flex justify-content-end m-5">
@@ -97,13 +92,12 @@
                         </div>
                         <div class="card-subtitle">
 
-                          <div class="vouchers">
+                          <div class="vouchers" style="background-color: wheat;">
                             <h3 style="text-align: left;">Vouchers Available: </h3>
                             
                             <div id="vchrTypes">
 <!--
                               <div class="vchr row" style="justify-content: center;">
-
                                 <div class="col-sm-6">
                                   <div class="card">
                                     <div class="card-body" style="margin-top: 75px;">
@@ -113,12 +107,11 @@
                                     </div>
                                   </div>
                                 </div> 
-
                               </div> -->
 
                             </div>
                           </div>
-                          <div class="rewards mt-5">
+                          <div class="rewards mt-5" style="background-color: wheat;">
                             <h3 style="text-align: left;">Membership: <br>
                               <div id="userMembership" style="text-align: left;"></div>
                             </h3>
@@ -276,7 +269,7 @@
       game.load.image('side rim', 'assets/images/side_rim.png');
       game.load.image('front rim', 'assets/images/front_rim.png');
   
-      game.load.image('win0', 'assets/images/win0.png');
+      game.load.image('win0', 'assets/imsages/win0.png');
       game.load.image('win1', 'assets/images/win1.png');
       game.load.image('win2', 'assets/images/win2.png');
       game.load.image('win3', 'assets/images/win3.png');

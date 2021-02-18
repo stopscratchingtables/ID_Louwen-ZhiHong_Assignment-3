@@ -1,3 +1,9 @@
+function inProgress(){
+
+    alert("This Feature is yet to be implemented");
+
+}
+
 // Check Membership
 function refreshImage(imgElement, imgURL){    
     // create a new timestamp 
@@ -300,6 +306,7 @@ $( document ).ready(function() {
           var newCartItem = new CartItems(img, title, price);
           cartArray.push(newCartItem);
           localStorage.setItem("cartItem", JSON.stringify(cartArray));
+          window.location.href = 'myCart.html';
         }
         else{
             console.log("exist")
@@ -322,7 +329,7 @@ $( document ).ready(function() {
     }
     function ProdTypeSearch() {
         $(".prodType").hide();
-      $(".prodTypeSearch").change(function(){
+        $(".prodTypeSearch").change(function(){
         $(".prodType").each(function(){
             if ($(".prodTypeSearch").val() == "all") {
                 if ($(this).parent().parent().parent().is(":hidden")) {
@@ -363,6 +370,7 @@ $( document ).ready(function() {
       ProdTypeSearch();
       ProdSearch();
 });
+
 
 function CheckUserExists(response, inputEmail)
 {

@@ -3,8 +3,27 @@ body {
     background-size: cover;
     background-attachment: fixed;
     animation: transitionIn 0.75s;
+
+    overflow-x: hidden;
+
 }
 
+.bg-dandelion {
+	background: rgb(232,196,82);
+	background: linear-gradient(90deg, rgba(232,196,82,1) 0%, rgba(214,189,90,1) 50%, rgba(232,196,82,1) 100%);
+}
+
+.bg-carbon {
+	background-color: #42413D;
+}
+
+.bg-ash {
+	background-color: #B2AFAC;
+}
+
+.bg-dust{
+	background-color: #959492;
+}
 
 .logo > p {
     background-color: wheat;
@@ -103,7 +122,7 @@ body {
 .vouchers, .rewards {
     margin-left: 10%;
     width: 80%;
-    border: 5px solid blue ;
+    border: 10px solid #42413D;
 }
 
 .progress {

@@ -10,11 +10,11 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-light bg-carbon">
             <div class="container-fluid">
                 <a class="navbar-brand fs-2 text-white" href="#">NoNego!</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                  <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto fs-4">
@@ -37,18 +37,17 @@
     </header>
     <section>
         <div class="container-fluid pb-5">
-            <div class="row">
-                <div id="avatarPlace" class="col-5 bg-secondary d-flex justify-content-center align-items-center">
-                    <img id="testAvatarID" height="100px" width="100px" id="avatarDefault" src="https://gutta.lv/wp-content/uploads/2015/10/test-img.jpg" class="img-fluid rounded-circle m-5" alt="img not available">
+            <div class="row" style="box-shadow: 0px 15px 25px -15px #111;">
+                <div id="avatarPlace" class="col-5 bg-dust d-flex justify-content-center align-items-center">
+                    <img height="100px" width="100px" id="avatarDefault" src="https://gutta.lv/wp-content/uploads/2015/10/test-img.jpg" class="img-fluid rounded-circle m-5" alt="img not available">
                 </div>
                 <!-- the span element is is for the values that will be inserted -->
-                <div class="col bg-primary">
+                <div class="col bg-dandelion">
                     <h4 id="wlcBackmsg">Welcome Back <span></span></h4>
                     <h4 id="userMembership">Membership: <span></span></h4>
                     <h4 id="userPoints">Points: <span></span></h4>
-                    <div class="progress">
+                    <div class="progress shadow">
                       <div class="progress-done" data-done="100">
-                        100%
                       </div>
                     </div>
                 </div>
@@ -56,9 +55,10 @@
         </div>
 
 
+        <div>
           <div class="row d-flex justify-content-center">
-            <div class="col-8 col-sm-5 title text-center mt-3 bg-dark">
-              <h4 class="fs-1 text-light">Limited Time Offers</h4>
+            <div class="col-8 col-sm-5 title text-center mt-3 bg-ash shadow-lg">
+              <h4 class="fs-1">Limited Time Offers</h4>
             </div>
           </div>
 
@@ -67,12 +67,12 @@
             <div class="mySlides">
               <div class="row d-flex justify-content-center">
                 <div class="col col-md-9 shopItem">
-                  <div class="card">
+                  <div class="card shadow-lg">
                     <img src="products/shirts/naruto_tshirt.jpg" class="card-img-top img-fluid prodImg" alt="...">
                     <div class="card-body">
                       <h5 class="card-title prodTitle">Naruto T-Shirt</h5>
                       <p class="card-text prodDesc">Become the Hokage with this awesome shirt!</p>
-                      <h4>$<span class="prodPrice">12.00</span></h4>
+                      <h4> <span class="text-danger"><del>$20</del></span>  <br>  $<span class="text-success prodPrice">12.00</span></h4>
                       <p class="prodType">shirt</p>
                       <button type="button rounded" class="btn btn-secondary addToCart">Add To Cart</button>
                     </div>
@@ -86,10 +86,10 @@
                 <div class="col col-md-9 shopItem">
                   <div class="card">
                     <img src="products/shirts/green_tshirt.jpg" class="card-img-top img-fluid prodImg" alt="img fail to load">
-                    <div class="card-body">
+                    <div class="card-body shadow-lg">
                       <h5 class="card-title prodTitle" >Green T-Shirt</h5>
                       <p class="card-text prodDesc" >Very Comfortable T-Shirt</p>
-                      <h4>$<span class="prodPrice">12.00</span></h4>
+                      <h4> <span class="text-danger"><del>$20</del></span> <br> $<span class="text-success prodPrice">12.00</span></h4>
                       <p class="prodType">shirt</p>
                       <button type="button rounded" class="btn btn-secondary addToCart">Add To Cart</button>
                     </div>
@@ -101,12 +101,12 @@
             <div class="mySlides">
               <div class="row d-flex justify-content-center">
                 <div class="col col-md-9 shopItem">
-                  <div class="card">
+                  <div class="card shadow-lg">
                     <img src="products/kitchen/Wok.jpg" class="card-img-top prodImg" alt="...">
                     <div class="card-body">
                       <h5 class="card-title prodTitle">Chinese Wok</h5>
                       <p class="card-text prodDesc">Very Durable Wok, can be used to cook all your stir fry dishes</p>
-                      <h4>$<span class="prodPrice">12.00</span></h4>
+                      <h4><span class="text-danger"><del>$32</del></span>   <br>     $<span class="text-success prodPrice">12.00</span></h4>
                       <p class="prodType">kitchen</p>
                       <button type="button rounded" class="btn btn-secondary addToCart">Add To Cart</button>
                     </div>
@@ -116,10 +116,12 @@
             </div>
           </div>
 
-
-          <div id="shop" class="row bg-secondary mt-5 pb-5">
-                <div class="col-8 col-sm-4">
-                    <form>
+          <div id="shop" class="row bg-carbon" style="height: 200px; overflow: hidden;">
+                <div class="col-3 shopLogo" style="padding-top: 2.5%;">
+                  <h1>💸💻</h1>
+                </div>
+                <div class="col-5 col-sm-4" style="width: 60%;">
+                      <form class="pt-5">
                         <div class="input-group" id="prodSearch">
                             <span class="input-group-text">Search</span>
                             <input type="text" class="form-control userInput">
@@ -127,7 +129,7 @@
                         <div class="input-group" id="prodType">
                             <span class="input-group-text">Type</span>
                             <select class="form-select form-select-sm prodTypeSearch" aria-label="form-select">
-                                <option value="all">all</option>
+                                <option value="all">All</option>
                                 <option value="shirt">Shirts</option>
                                 <option value="electronics">Electronics</option>
                                 <option value="food">Food</option>
@@ -137,7 +139,8 @@
                     </form>
                 </div>
             </div>
-            <div class="row row-cols-1 row-cols-md-3 g-4 bg-secondary">
+            
+            <div class="row row-cols-1 row-cols-md-3 g-4 bg-dandelion">
                 <div class="col shopItem">
                   <div class="card">
                     <img src="products/shirts/green_tshirt.jpg" class="card-img-top prodImg" alt="img fail to load">
@@ -401,14 +404,14 @@
 
       // DISPLAYING USER'S DETAILS
 
-        document.getElementById('wlcBackmsg').innerHTML = `Welcome Back ${localStorage.getItem("userName")}`;
+        document.getElementById('wlcBackmsg').innerHTML = `Welcome Back <u>${localStorage.getItem("userName")}</u> !`;
         document.getElementById('userMembership').innerHTML = `Membership: ${localStorage.getItem("userMembership")}`;
         document.getElementById('userPoints').innerHTML = `Points:  ${localStorage.getItem("userPoints")}`;
 
       // DISPLAYING POINT LOYALTY BAR
 
         const progress = document.querySelector('.progress-done');
-        progress.innerHTML = localStorage.getItem("userPoints");
+        progress.innerHTML = `<h4 class="text-dark" style="margin-top: 5px;">${localStorage.getItem("userPoints")}</h4>`
 
         var points = parseInt(localStorage.getItem("userPoints")) / 900 * 100
         progress.style.width = points + '%';
