@@ -93,7 +93,8 @@ earned!
 | ------------- |:-------------:|
 | "Unsplash (Background Image)"     | https://unsplash.com/ |
 | "Icons"     | https://thenounproject.com/ |
-| "Product Images"     | "Zhi hong put here plz" |
+| "Product Images"     | Frog Tshirt: https://ae01.alicdn.com/kf/Hbee0f3b0bd08495d89a8e539a3dbb1f9p.jpg
+                         Green Tshirt: https://www.google.com/aclk?sa=l&ai=DChcSEwjFiqf7hvTuAhWDZIsKHQFLB_oYABAFGgJ0bQ&sig=AOD64_0Y62QpzRI_bAhegxM-jqtAYLPTFw&adurl&ctype=5&ved=2ahUKEwj_qJz7hvTuAhXp5XMBHRpFBZEQwg96BAgBEGQ|
 
 ### Templates/Structures Used
 | Templates        | Link           |
