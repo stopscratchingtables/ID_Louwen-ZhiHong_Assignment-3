@@ -15,14 +15,12 @@
   
   $.ajax(settings).done(function (response) {
     console.log(response);
-
+    // Delta
     if (localStorage.getItem("userPoints") < 300)
     {
-        rangeMax = 300;
-        rangeMin = 0;
         for (let i = 0; i < response.length; i++)
         {
-            if (response[i].voucherMinPoints < rangeMax && response[i].voucherMinPoints <= localStorage.getItem("userPoints"))
+            if (response[i].voucherMinPoints < 300 && response[i].voucherMinPoints <= localStorage.getItem("userPoints"))
             {
                 var v = document.getElementById("vchrTypes");
                 v.innerHTML += `
@@ -44,30 +42,32 @@
             }
         }
     }
-    else if (localStorage.getItem("userPoints") >= 300 && localStorage.getItem("userPoints") < 900)
+    else if (localStorage.getItem("userPoints") >= 300)
     {
-        rangeMin = 300;
         for (let i = 0; i < response.length; i++)
         {
-            if (response[i].voucherMinPoints >= rangeMin && response[i].voucherMinPoints <= localStorage.getItem("userPoints"))
+            if (response[i].voucherMinPoints >= 300)
             {
-                var v = document.getElementById("vchrTypes");
-                v.innerHTML = `
-                
-                <div class="vchr row" style="justify-content: center;">
-    
-                <div class="col-sm-6">
-                  <div class="card">
-                    <div class="card-body" style="margin-top: 75px;">
-                      <h5 class="card-title">${response[i].voucherName}</h5>
-                      <p class="card-text">${response[i].voucherDesc} <br> Voucher Value: ${response[i].voucherValue}%</p>
-                      <button onclick="ApplyVcherButton(${response[i].voucherValue}, ${response[i].voucherMinValue}, '${response[i].voucherName}')" value="${response[i].voucherValue}" class="btn btn-primary vouchButton">Apply Voucher</button>
+              if (response[i].voucherMinPoints <= localStorage.getItem("userPoints"))
+              {
+                  var v = document.getElementById("vchrTypes");
+                  v.innerHTML = `
+                  
+                  <div class="vchr row" style="justify-content: center;">
+      
+                  <div class="col-sm-6">
+                    <div class="card">
+                      <div class="card-body" style="margin-top: 75px;">
+                        <h5 class="card-title">${response[i].voucherName}</h5>
+                        <p class="card-text">${response[i].voucherDesc} <br> Voucher Value: ${response[i].voucherValue}%</p>
+                        <button onclick="ApplyVcherButton(${response[i].voucherValue}, ${response[i].voucherMinValue}, '${response[i].voucherName}')" value="${response[i].voucherValue}" class="btn btn-primary vouchButton">Apply Voucher</button>
+                      </div>
                     </div>
                   </div>
+      
                 </div>
-    
-              </div>
-                `;
+                  `;
+              }
             }
         }
 
