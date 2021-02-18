@@ -271,16 +271,14 @@ function startDinoGame()
   instructions.innerHTML += `<br><button onclick="endGame()">End Game</button>`;
   document.getElementById("gameLocation").appendChild(instructions);
 
-  DinoGame();
+  g();
 
 }
 
-
-function DinoGame()
-{  
-
-    const canvas = document.getElementById('game');
-    const ctx = canvas.getContext('2d');
+function g()
+{
+  const canvas = document.getElementById('game');
+  const ctx = canvas.getContext('2d');
 
     // Variables
     let score;
@@ -506,6 +504,7 @@ function DinoGame()
     }
 
     Start();
+
 
 }
 
