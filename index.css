@@ -8,6 +8,19 @@ body {
 
 }
 
+@media only screen 
+    and (device-width : 375px) 
+    and (-webkit-device-pixel-ratio : 3) 
+	{ 
+
+        body {
+        
+            overflow-x: hidden;
+        
+        }
+
+	}
+
 .bg-dandelion {
 	background: rgb(232,196,82);
 	background: linear-gradient(90deg, rgba(232,196,82,1) 0%, rgba(214,189,90,1) 50%, rgba(232,196,82,1) 100%);

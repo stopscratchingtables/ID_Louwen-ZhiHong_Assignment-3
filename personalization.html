@@ -16,6 +16,15 @@
       overflow-x: hidden;
     }
 
+    @media only screen 
+    and (device-width : 375px) 
+    and (-webkit-device-pixel-ratio : 3) 
+      { 
+        body {
+          overflow-x: hidden;
+        }
+      }
+
     .bg-dandelion {
         background: rgb(232,196,82);
         background: linear-gradient(90deg, rgba(232,196,82,1) 0%, rgba(214,189,90,1) 50%, rgba(232,196,82,1) 100%);
@@ -208,7 +217,7 @@
   <section>
 
     <div class="row d-flex justify-content-center">
-      <div class="col-5 title text-center bg-dust" style="margin-top: 100px;">
+      <div class="col-7 title text-center bg-dust" style="margin-top: 100px;">
           <h4 class="fs-1 text-dark">Account Personalization</h4>
       </div>
     </div>
