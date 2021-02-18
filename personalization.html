@@ -56,10 +56,15 @@
             <button class="btn btn-success" onclick="overrideNo()">No</button>
             <button class="btn btn-danger " onclick="overrideYes()">Yes</button>
           </section>
+          
 
           <!-- Edit/Create Avtar Nav Bar -->
           <nav id="CavtarNavBar"class="navbar navbar-expand-lg navbar-light bg-white">
+
             <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav fs-4">
                         <li class="nav-item">
@@ -74,14 +79,18 @@
                         <li class="nav-item">
                             <a href="#" onclick="avHair()" class="nav-link text-dark">Hair</a>
                         </li>
+                        <li class="nav-item">
+                          <a href="#" onclick="avTops()" class="nav-link text-dark">Tops</a>
+                      </li>
                     </ul>
                 </div>
               </div>
-          </nav>
+
+            </nav>
 
 
           <!-- Gender -->
-          <section id="CavatarGender" style="margin-top: 60px; color: wheat;">
+        <section id="CavatarGender" style="margin-top: 60px; color: wheat;">
             <div class="form-check">
               <label class="form-check-label">
                 <input type="radio" id="avatarGMale" class="form-check-input" name="optradio" value="male">Male
@@ -97,46 +106,71 @@
 
         <!-- Skin -->
         <section id="CavatarSkin" style="margin-top: 60px;">
-          <button id="AvatardarkBrownSkin">Dark Brown</button><br>
-          <button id="AvatarlightBrownSkin">Light Brown</button><br>
-          <button id="AvatarfairSkin">Fair</button>
+          <div class="input-group">
+            <span class="input-group-text">Type</span>
+            <select class="form-select form-select-sm prodTypeSearch" aria-label="form-select">
+                <option>Select Skin Colour</option>
+                <option id="AvatardarkBrownSkin">Dark Brown</option>
+                <option id="AvatarlightBrownSkin">Light Brown</option>
+                <option id="AvatarfairSkin">Fair</option>
+              </select>
+          </div>
         </section>
 
         <!-- Hair -->
         <section id="CavatarHair" style="margin-top: 60px;">
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Hair Type
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+
+            <h2>Hair Type</h2>
+            <div class="input-group">
+              <span class="input-group-text">Type</span>
+              <select class="form-select form-select-sm prodTypeSearch" aria-label="form-select">
+                  <option>Select Hair Type</option>
+                  <option onclick="EditAvatarAsset('18', localStorage.getItem('AvatarKey'))">Short Bob</option>
+                  <option onclick="EditAvatarAsset('76', localStorage.getItem('AvatarKey'))">Curly</option>
+                </select>
             </div>
-          </div>
-          <button>Test Hair Type</button>
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Hair Colour
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+
+            <br><h2>Hair Colour</h2>
+            <div class="input-group">
+              <span class="input-group-text">Type</span>
+              <select class="form-select form-select-sm prodTypeSearch" aria-label="form-select">
+                  <option>Select Hair Colour</option>
+                  <option onclick="EditAvatarAssetColour(localStorage.getItem('AvatarKey'), 'hair', '190F07')">Black</option>
+                  <option onclick="EditAvatarAssetColour(localStorage.getItem('AvatarKey'), 'hair', 'C0C0C0')">Grey</option>
+                  <option onclick="EditAvatarAssetColour(localStorage.getItem('AvatarKey'), 'hair', 'EDC5A7')">Blonde</option>
+                  <option onclick="EditAvatarAssetColour(localStorage.getItem('AvatarKey'), 'hair', '800000')">Brown</option>
+              </select>
             </div>
-          </div>
-          <button>Test Hair Color</button>
         </section>
 
         <!-- Glasses -->
         <section id="CavatarExpressions" style="margin-top: 60px;">
-          <button onclick="EditAvatarAsset('123', localStorage.getItem('AvatarKey'))" id="AvatarAviatorGlasses">Aviator Glasses</button><br>
-          <button onclick="EditAvatarAsset('124', localStorage.getItem('AvatarKey'))" id="Wraps">Wraps</button><br>
-          <button onclick="EditAvatarAsset('125', localStorage.getItem('AvatarKey'))" id="BigGlasses">Big Glasses</button><br>
+          <div class="input-group">
+            <span class="input-group-text">Type</span>
+            <select class="form-select form-select-sm prodTypeSearch" aria-label="form-select">
+                <option>Select Glasses Type</option>
+                <option onclick="EditAvatarAsset('123', localStorage.getItem('AvatarKey'))" id="AvatarAviatorGlasses">Aviator Glasses</option>
+                <option onclick="EditAvatarAsset('124', localStorage.getItem('AvatarKey'))" id="Wraps">Wraps</option>
+                <option onclick="EditAvatarAsset('125', localStorage.getItem('AvatarKey'))" id="BigGlasses">Big Glasses</option>
+            </select>
+          </div>
+        </section>
+
+        <!-- Tops -->
+        <section id="CavatarTops" style="margin-top: 60px;">
+          <div class="input-group">
+            <span class="input-group-text">Type</span>
+            <select class="form-select form-select-sm prodTypeSearch" aria-label="form-select">
+                <option>Select Top Type</option>
+                <option >Top 1</option>
+                <option >Top 2</option>
+                <option >Top 3</option>
+            </select>
+          </div>
         </section>
 
         <div id="cfmAvatar" style="margin-top: 60px;">
-            <button class="btn btn-dark">Finalise Avatar</button>
+            <button class="btn btn-dark" onclick="FinishAvatar()">Finalise Avatar</button>
         </div>
 
         </div>
@@ -182,7 +216,7 @@
 
               <table class="table">
                 <thead>
-                  <tr class="table-info">
+                  <tr class="bg-light">
                     <th>Avatar</th>
                     <th scope="col">Email</th>
                     <th scope="col">Membership</th>
@@ -242,6 +276,7 @@
     $('#CavatarSkin').hide();
     $('#CavatarHair').hide();
     $('#CavatarExpressions').hide();
+    $('#CavatarTops').hide();
 
     ///////////////////////////////////////
     function avGender()
@@ -250,6 +285,7 @@
       $('#CavatarSkin').hide();
       $('#CavatarHair').hide();
       $('#CavatarExpressions').hide();
+      $('#CavatarTops').hide();
     }
     document.getElementById("avatarGMale").addEventListener("click", function()
     {
@@ -267,6 +303,7 @@
       $('#CavatarGender').hide();
       $('#CavatarSkin').hide();
       $('#CavatarHair').hide();
+      $('#CavatarTops').hide();
     }
 
     ///////////////////////////////////////
@@ -276,6 +313,7 @@
       $('#CavatarHair').hide();
       $('#CavatarExpressions').hide();
       $('#CavatarGender').hide();
+      $('#CavatarTops').hide();
     }
     document.getElementById("AvatardarkBrownSkin").addEventListener("click", function()
     { 
@@ -293,8 +331,6 @@
       EditAvatarSkin("ffdbac", aCode);
     });
 
-
-
     ///////////////////////////////////////
 
     function avHair()
@@ -303,7 +339,22 @@
       $('#CavatarGender').hide();
       $('#CavatarSkin').hide();
       $('#CavatarExpressions').hide();
+      $('#CavatarTops').hide();
     }
+
+    function avTops()
+    {
+      $('#CavatarTops').show();
+      $('#CavatarHair').hide();
+      $('#CavatarGender').hide();
+      $('#CavatarSkin').hide();
+      $('#CavatarExpressions').hide();
+    }
+
+function FinishAvatar()
+{
+  document.getElementById("avatarPic");
+}
 
 // DISPLAYING FRIENDS LIST
 var friendsList = localStorage.getItem("friendsList").split(",");
@@ -331,7 +382,7 @@ var settings = {
         if (friendsList[i] == response[x].useremail)
         {
           document.getElementById("friendsTable").innerHTML += 
-          `<tr class="table-info">
+          `<tr class="bg-light">
               <th scope="row">${response[x].userAvatar}</th>
               <td>${response[x].useremail}</td>
               <td>${response[x].userMembership}</td>

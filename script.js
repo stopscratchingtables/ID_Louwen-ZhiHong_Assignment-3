@@ -174,8 +174,6 @@ function EditAvatarAsset(eCode, aCode) {
     124 - Wraps
     125 - Big Glasses
 
-
-    13 - cute princess
     18 - short bob
     76 - curly
     */
@@ -201,6 +199,35 @@ function EditAvatarAsset(eCode, aCode) {
         var refedImage = refreshImage("avatarPic", data.thumbnailSrc);
         document.getElementById("avatarPic").remove();
 
+
+        document.getElementById("AvtarPicSpace").innerHTML += ('<img id="avatarPic" style="margin-top: 60px; margin-left: 60px;" src="' + refedImage + '"></img>');
+    })
+    .catch(err => {
+        console.error(err);
+    });
+
+}
+
+function EditAvatarAssetColour(aCode, type, cCode)
+{
+
+    fetch(`https://doppelme-avatars.p.rapidapi.com/avatar/${aCode}/${type}/${cCode}`, {
+	"method": "PUT",
+	"headers": {
+		"x-rapidapi-key": "7ef7505eeemsh4b7ae28b990ec32p10a9e5jsnf404942f045e",
+		"x-rapidapi-host": "doppelme-avatars.p.rapidapi.com"
+	}
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Thumbnail SRC: " + data.thumbnailSrc);
+
+        var imageurl_Skin = data.thumbnailSrc;
+        var img = document.createElement('img');
+        img.src = imageurl_Skin
+
+        var refedImage = refreshImage("avatarPic", data.thumbnailSrc);
+        document.getElementById("avatarPic").remove();
 
         document.getElementById("AvtarPicSpace").innerHTML += ('<img id="avatarPic" style="margin-top: 60px; margin-left: 60px;" src="' + refedImage + '"></img>');
     })
