@@ -181,9 +181,10 @@
 
         <!-- Tops -->
         <section id="CavatarTops" style="margin-top: 60px;">
-          <button onclick="inProgress()">Top 1</button><br>
-          <button onclick="inProgress()">Top 2</button><br>
-          <button onclick="inProgress()">Top 3</button>
+          <button onclick="EditAvatarAsset('35', localStorage.getItem('AvatarKey'))">Racing Leathers</button><br>
+          <button onclick="EditAvatarAsset('44', localStorage.getItem('AvatarKey'))">Camouflage</button><br>
+          <button onclick="EditAvatarAsset('45', localStorage.getItem('AvatarKey'))">Suit</button><br>
+          <button onclick="EditAvatarAsset('677', localStorage.getItem('AvatarKey'))">zombie clothes</button>
         </section>
 
         <div id="cfmAvatar" style="margin-top: 60px;">
@@ -474,7 +475,7 @@ var settings = {
         {
           document.getElementById("friendsTable").innerHTML += 
           `<tr class="bg-light">
-              <th scope="row">${response[x].userAvatar}</th>
+              <th scope="row"><img src='${response[x].userAvatar}''></img></th>
               <td>${response[x].useremail}</td>
               <td>${response[x].userMembership}</td>
               <td>${response[x].userPoints}</td>
