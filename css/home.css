@@ -1,6 +1,6 @@
 body{
 
-	background-image: url(media/LoginForumBG.jpeg);
+	background-image: url(../media/LoginForumBG.jpeg);
 	background-size: cover;
 	background-attachment: fixed;
 	animation: transitionIn 0.75s;

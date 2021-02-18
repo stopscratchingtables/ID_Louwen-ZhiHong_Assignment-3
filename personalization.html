@@ -8,13 +8,22 @@
   <style>
     body{
 
-      background-image: url(media/LoginForumBG.jpeg);
+      background-image: url(../media/LoginForumBG.jpeg);
       background-size: cover;
       background-attachment: fixed;
       animation: transitionIn 0.75s;
 
       overflow-x: hidden;
     }
+
+    @media only screen 
+    and (device-width : 375px) 
+    and (-webkit-device-pixel-ratio : 3) 
+      { 
+        body {
+          overflow-x: hidden;
+        }
+      }
 
     .bg-dandelion {
         background: rgb(232,196,82);
@@ -71,7 +80,7 @@
       </div>
     </div>
     <div class="row d-flex justify-content-center">
-        <div class="col-8 text-left bg-dandelion pb-3">
+        <div class="col-10 text-left bg-dandelion pb-3">
             <h3>How To Create An Avatar?</h3>
             <h5>1) Click on "Create Avatar Button"</h5>
             <h5>2) Choose Your Character's Gender </h5>
@@ -79,19 +88,21 @@
         </div>
     </div>
     <div class="row d-flex justify-content-center">
-        <div id="AvtarPicSpace" class="pt-5 pb-5 col-3 bg-dandelion" style="justify-content: center;">
+        <div id="AvtarPicSpace" class="pt-5 pb-5 col-4 bg-dandelion" style="justify-content: center;">
           <img id="sampleAvatar" src="https://gutta.lv/wp-content/uploads/2015/10/test-img.jpg" class="card-img-top" id="prodImg2" alt="...">
         </div>
 
-        <div class="col-5 text-center bg-dust">
+        <div class="col-6 text-center bg-dust">
 
           <button class="btn btn-primary" style="margin-top: 22.5%;" id="CreatAvtarButton" onclick="viewAvatarNav()">Click Here To Create Avatar</button>
 
-          <div id="deniedLottieAvatar" style="display: flex; justify-content: center;">
-            <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_h3Bz5a.json"  background="transparent"  speed="1"  style="width: 150px; height: 150x;"  loop  autoplay></lottie-player> 
+          <div id="deniedLottieAvatar" style="justify-content: center; text-align: center; padding-top: 85px;">
+            <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_h3Bz5a.json"  background="transparent"  speed="1"  style="width: 150px; height: 150x; margin: auto;"  loop  autoplay></lottie-player> 
+            <h3 class="text-danger">Invalid Avatar</h3>
           </div>
-          <div id="successLottieAvatar" style="display: flex; justify-content: center;">
-            <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_tAtUrg.json"  background="transparent"  speed="1"  style="width: 150px; height: 150px;"  loop  autoplay></lottie-player>
+          <div id="successLottieAvatar" style="justify-content: center; text-align: center; padding-top: 85px;">
+            <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_tAtUrg.json"  background="transparent"  speed="1"  style="width: 150px; height: 150px; margin: auto;"  loop  autoplay></lottie-player>
+            <h3 class="text-success">Nice Avatar!</h3>
           </div>
 
           <section id="overridePrevAvatar" style="margin-top: 20%;">
@@ -163,20 +174,25 @@
 
           <h2>Hair Type</h2>
           <button onclick="EditAvatarAsset('18', localStorage.getItem('AvatarKey'))">Short Bob</button><br>
-          <button onclick="EditAvatarAsset('76', localStorage.getItem('AvatarKey'))">Curly</button>
+          <button onclick="EditAvatarAsset('76', localStorage.getItem('AvatarKey'))">Curly</button><br>
+          <button onclick="EditAvatarAsset('9', localStorage.getItem('AvatarKey'))">Mousstache & Goatee</button><br>
 
           <br><h2>Hair Colour</h2>
           <button onclick="EditAvatarAssetColour(localStorage.getItem('AvatarKey'), 'hair', '190F07')">Black</button><br>
           <button onclick="EditAvatarAssetColour(localStorage.getItem('AvatarKey'), 'hair', 'C0C0C0')">Grey</button><br>
           <button onclick="EditAvatarAssetColour(localStorage.getItem('AvatarKey'), 'hair', 'EDC5A7')">Blonde</button><br>
-          <button onclick="EditAvatarAssetColour(localStorage.getItem('AvatarKey'), 'hair', '800000')">Brown</button>
+          <button onclick="EditAvatarAssetColour(localStorage.getItem('AvatarKey'), 'hair', '800000')">Brown</button><br>
+          <button onclick="EditAvatarAssetColour(localStorage.getItem('AvatarKey'), 'facial', '190F07')">Black Moustache</button>
         </section>
 
-        <!-- Glasses -->
+        <!-- Assets -->
         <section id="CavatarExpressions" style="margin-top: 60px;">
           <button onclick="EditAvatarAsset('123', localStorage.getItem('AvatarKey'))" id="AvatarAviatorGlasses">Aviator Glasses</button><br>
           <button onclick="EditAvatarAsset('124', localStorage.getItem('AvatarKey'))" id="Wraps">Wraps</button><br>
-          <button onclick="EditAvatarAsset('125', localStorage.getItem('AvatarKey'))" id="BigGlasses">Big Glasses</button>
+          <button onclick="EditAvatarAsset('125', localStorage.getItem('AvatarKey'))" id="BigGlasses">Big Glasses</button><br>
+          <button onclick="EditAvatarAsset('21', localStorage.getItem('AvatarKey'))" id="EarMuffs">Ear Muffs</button><br>
+          <button onclick="EditAvatarAsset('20', localStorage.getItem('AvatarKey'))" id="BaseballCap">Baseball Cap</button><br>
+          <button onclick="EditAvatarAsset('27', localStorage.getItem('AvatarKey'))" id="Beret">Beret</button>
         </section>
 
         <!-- Tops -->
@@ -201,12 +217,12 @@
   <section>
 
     <div class="row d-flex justify-content-center">
-      <div class="col-5 title text-center bg-dust" style="margin-top: 100px;">
+      <div class="col-7 title text-center bg-dust" style="margin-top: 100px;">
           <h4 class="fs-1 text-dark">Account Personalization</h4>
       </div>
     </div>
     <div class="row d-flex justify-content-center" style="margin-bottom: 90px;">
-        <div class="col-8 bg-dandelion">
+      <div class="col-10 bg-dandelion">
 
           <!-- Change Account Email and Pass -->
           <h2 class="pt-5"><i>Edit Account Details</i></h2>
@@ -267,7 +283,17 @@
             <h3>Select Friend(s) You wish to Remove</h3>
           </div>
             <button class="btn-danger" id="cfmDelFriends" onclick="cfmDelFriends()">Confirm Delete</button>
-        </div>
+
+
+            <div id="deniedLottieFriend" style="justify-content: center; text-align: center; padding-top: 85px;">
+              <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_h3Bz5a.json"  background="transparent"  speed="1"  style="width: 150px; height: 150x; margin: auto;"  loop  autoplay></lottie-player> 
+            </div>
+            <div id="successLottieFriend" style="justify-content: center; text-align: center; padding-top: 85px;">
+              <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_tAtUrg.json"  background="transparent"  speed="1"  style="width: 150px; height: 150px; margin: auto;"  loop  autoplay></lottie-player>
+              <h3 class="text-success"></h3>
+            </div>
+
+      </div>
 
     </div>
 
@@ -279,12 +305,14 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-  <script src="script.js"></script>
+  <script src="./script/script.js"></script>
   <script>
 
     /////////// Animations ///////////////////
     $("#deniedLottieAvatar").hide();
     $("#successLottieAvatar").hide();
+    $("#deniedLottieFriend").hide();
+    $("#successLottieFriend").hide();
 
     //////////////////////////////////////////
 
@@ -398,7 +426,6 @@ function FinishAvatar()
       function msgAnimation(){
         $('#cfmAvatar').show();
         $('#CavtarNavBar').show();
-        alert("Invalid Avatar");
       }
   }
   
@@ -421,7 +448,6 @@ function FinishAvatar()
     function msgAnimation(){
       $('#cfmAvatar').show();
       $('#CavtarNavBar').show();
-      alert("Invalid Avatar");
     }
 
   }
@@ -570,7 +596,14 @@ submitNewFriends.addEventListener("click", function()
     console.log(result);
     if (result == 2 || x.value == "")
     {
-      alert("Account does not exist");
+        $("#deniedLottieFriend").fadeIn();
+        $("#deniedLottieFriend").fadeOut(3750);
+
+        setTimeout(msgAnimation, 3750);
+        function msgAnimation(){
+          $("afBtn").show();
+          $("dfBtn").show()
+        }
     }
     else if (result == 1)
     {
@@ -578,7 +611,14 @@ submitNewFriends.addEventListener("click", function()
 
       if (y == 1)
       {
-        alert("friend already exists in your current list");
+        $("#deniedLottieFriend").fadeIn();
+        $("#deniedLottieFriend").fadeOut(3750);
+
+        setTimeout(msgAnimation, 3750);
+        function msgAnimation(){
+          $("afBtn").show();
+          $("dfBtn").show();
+        }
       }
       else if (y == 2)
       {
@@ -652,7 +692,15 @@ console.log(newFriends);
     $('#cfmDelFriends').hide();
     $('#addFriendForm').hide();
     $('#submitAddFriends').hide();
-    alert("Refresh Page once again to get updated friendsList");
+
+    $("#successLottieFriend").fadeIn();
+    $("#successLottieFriend").fadeOut(3750);
+
+    setTimeout(msgAnimation, 3750);
+    function msgAnimation(){
+      $("afBtn").show();
+      $("dfBtn").show()
+    }
   });
 }
 

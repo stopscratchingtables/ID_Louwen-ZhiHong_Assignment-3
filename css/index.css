@@ -1,5 +1,5 @@
 body {
-    background-image: url(media/LoginForumBG.jpeg);
+    background-image: url(../media/LoginForumBG.jpeg);
     background-size: cover;
     background-attachment: fixed;
     animation: transitionIn 0.75s;
@@ -7,6 +7,22 @@ body {
     overflow-x: hidden;
 
 }
+
+@media only screen 
+    and (device-width : 375px) 
+    and (-webkit-device-pixel-ratio : 3) 
+	{ 
+
+        body {
+            overflow-x: hidden;        
+        }
+
+        .loadingLottie, .wrongPassLottie, .successLottie {
+            width: 50%; 
+            height: 50%;
+        }
+
+	}
 
 .bg-dandelion {
 	background: rgb(232,196,82);
@@ -149,9 +165,5 @@ body {
 }
 .modal, .loadingLottie, .wrongPassLottie {
     display: flex;
-    justify-content: center;
-}
-
-canvas {
     justify-content: center;
 }
