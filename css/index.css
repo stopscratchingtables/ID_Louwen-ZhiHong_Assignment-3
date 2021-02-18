@@ -9,7 +9,7 @@ body {
 }
 
 @media only screen 
-    and (device-width : 375px) 
+    and (max-width : 375px) 
     and (-webkit-device-pixel-ratio : 3) 
 	{ 
 

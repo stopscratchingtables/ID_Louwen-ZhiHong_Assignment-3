@@ -54,7 +54,7 @@
             <div class="card mt-100">
                 <div class="card-content">
                     <div class="card-body p-0">
-                        <div class="profile"> <img src="media/shoppingCart.png"> </div>
+                        <div class="profile"> <img src="media/shoppingCart.png" alt="img cannot be loaded"> </div>
                         <div class="card-subtitle cartAppend">
                         </div>
                         <div class="row">
@@ -93,7 +93,7 @@
 
                     <div class="card-body p-0">
                         <div class="profile"> 
-                          <img src="media/rewards.png">
+                          <img src="media/rewards.png" alt="img cannot be loaded">
                         </div>
                         <div class="card-subtitle">
 
@@ -118,14 +118,14 @@
                           </div>
                           <div class="rewards mt-5" style="background-color: wheat;">
                             <h3 style="text-align: left;">Membership: <br>
-                              <div id="userMembership" style="text-align: left;"></div>
+                              <span id="userMembership" style="text-align: left;"></span>
                             </h3>
-                            <h3 style="text-align: left;" style="margin-right: 69%;">Points: <br>
-                            <div style="text-align: left;" id="userPoints"></div>
+                            <h3 style="margin-right: 69%; text-align: left">Points: <br>
+                            <span style="text-align: left;" id="userPoints"></span>
                             </h3>
 
-                            <h3 style="text-align: left;" style="margin-right: 69%;">Game Tokens: <br>
-                              <div style="text-align: left;" id="gameTokens"></div>
+                            <h3 style="margin-right: 69%; text-align: left">Game Tokens: <br>
+                              <span style="text-align: left;" id="gameTokens"></span>
                             </h3>
                             
                             <div class="progress">
@@ -136,13 +136,13 @@
 
                             <div id="gamesProfiles" class="profile">
                               <button onclick="startBallGame()">
-                                <img src="media/basketball.png">
+                                <img src="media/basketball.png" alt="img cannot be loaded">
                               </button>
                               <button onclick="startDinoGame()">
-                                <img src="media/dinosaur.png" alt="">
+                                <img src="media/dinosaur.png" alt="img cannot be loaded">
                               </button>
                               <button onclick="inProgress()">
-                                <img src="media/flappyBird.png">
+                                <img src="media/flappyBird.png" alt="img cannot be loaded">
                               </button>
                             </div>
 
@@ -156,16 +156,15 @@
                             <div id="gameLocation" style="justify-content: center; overflow: hidden;">
                               <canvas id="game" width="640" height="400"></canvas>
                             </div>
-
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
       </div>
       <div class="modal">
         <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_bP7KzP.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"    autoplay></lottie-player>
+      </div>
       </div>
     </section>
 

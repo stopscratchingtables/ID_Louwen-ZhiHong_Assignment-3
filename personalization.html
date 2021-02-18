@@ -17,7 +17,7 @@
     }
 
     @media only screen 
-    and (device-width : 375px) 
+    and (max-width : 375px) 
     and (-webkit-device-pixel-ratio : 3) 
       { 
         body {
@@ -89,7 +89,7 @@
     </div>
     <div class="row d-flex justify-content-center">
         <div id="AvtarPicSpace" class="pt-5 pb-5 col-4 bg-dandelion" style="justify-content: center;">
-          <img id="sampleAvatar" src="https://gutta.lv/wp-content/uploads/2015/10/test-img.jpg" class="card-img-top" id="prodImg2" alt="...">
+          <img id="sampleAvatar" src="https://gutta.lv/wp-content/uploads/2015/10/test-img.jpg" class="card-img-top" alt="...">
         </div>
 
         <div class="col-6 text-center bg-dust">
@@ -97,7 +97,7 @@
           <button class="btn btn-primary" style="margin-top: 22.5%;" id="CreatAvtarButton" onclick="viewAvatarNav()">Click Here To Create Avatar</button>
 
           <div id="deniedLottieAvatar" style="justify-content: center; text-align: center; padding-top: 85px;">
-            <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_h3Bz5a.json"  background="transparent"  speed="1"  style="width: 150px; height: 150x; margin: auto;"  loop  autoplay></lottie-player> 
+            <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_h3Bz5a.json"  background="transparent"  speed="1"  style="width: 150px; height: 150px; margin: auto;"  loop  autoplay></lottie-player> 
             <h3 class="text-danger">Invalid Avatar</h3>
           </div>
           <div id="successLottieAvatar" style="justify-content: center; text-align: center; padding-top: 85px;">
@@ -113,13 +113,13 @@
           
 
           <!-- Edit/Create Avtar Nav Bar -->
-          <nav id="CavtarNavBar"class="navbar navbar-expand-lg navbar-light bg-white">
+          <nav id="CavtarNavBar" class="navbar navbar-expand-lg navbar-light bg-white">
 
             <div class="container-fluid">
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
               </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent2">
                     <ul class="navbar-nav fs-4">
                         <li class="nav-item">
                             <a href="#" onclick="avGender()" class="nav-link text-dark">Gender</a>
@@ -211,6 +211,7 @@
 
     </div>
     <div>
+    </div>
   </section>
 
 
@@ -228,11 +229,11 @@
           <h2 class="pt-5"><i>Edit Account Details</i></h2>
           <form class="w-50">
             <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
+              <label for="inputEmail">Email address</label>
               <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
+              <label for="inputPass">Password</label>
               <input type="password" class="form-control" id="inputPass" placeholder="Password">
             </div>
           </form>
@@ -286,7 +287,7 @@
 
 
             <div id="deniedLottieFriend" style="justify-content: center; text-align: center; padding-top: 85px;">
-              <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_h3Bz5a.json"  background="transparent"  speed="1"  style="width: 150px; height: 150x; margin: auto;"  loop  autoplay></lottie-player> 
+              <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_h3Bz5a.json"  background="transparent"  speed="1"  style="width: 150px; height: 150px; margin: auto;"  loop  autoplay></lottie-player> 
             </div>
             <div id="successLottieFriend" style="justify-content: center; text-align: center; padding-top: 85px;">
               <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_tAtUrg.json"  background="transparent"  speed="1"  style="width: 150px; height: 150px; margin: auto;"  loop  autoplay></lottie-player>
