@@ -42,6 +42,14 @@
       </div>
     </div>
     <div class="row d-flex justify-content-center">
+        <div class="col-8 text-left bg-secondary pb-3">
+            <h3>How To Create An Avatar?</h3>
+            <h5>1) Click on "Create Avatar Button"</h5>
+            <h5>2) Choose Your Character's Gender </h5>
+            <h5>3) Feel Free to Mix and Match with the Assets and Features on Display! </h5>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center">
         <div id="AvtarPicSpace" class="col-3 bg-secondary" style="justify-content: center;">
           <img id="sampleAvatar" src="https://gutta.lv/wp-content/uploads/2015/10/test-img.jpg" class="card-img-top" id="prodImg2" alt="...">
         </div>
@@ -381,9 +389,9 @@ function FinishAvatar()
 
     $('#CavatarExpressions').hide();
     $("#deniedLottieAvatar").fadeIn();
-    $("#deniedLottieAvatar").fadeOut(4500);
+    $("#deniedLottieAvatar").fadeOut(3750);
 
-    setTimeout(msgAnimation, 4500);
+    setTimeout(msgAnimation, 3750);
         
     function msgAnimation(){
       $('#cfmAvatar').show();
@@ -405,9 +413,9 @@ function FinishAvatar()
     makeChangesAvatar(avPicSrc);
 
     $("#successLottieAvatar").fadeIn();
-    $("#successLottieAvatar").fadeOut(4500);
+    $("#successLottieAvatar").fadeOut(3750);
 
-    setTimeout(msgAnimation, 4500);
+    setTimeout(msgAnimation, 3750);
         
     function msgAnimation(){
       $('#cfmAvatar').show();
