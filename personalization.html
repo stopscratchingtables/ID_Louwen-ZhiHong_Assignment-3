@@ -51,6 +51,13 @@
 
           <button style="margin-top: 12.5%;" id="CreatAvtarButton" onclick="viewAvatarNav()">Click Here To Create Avatar</button>
 
+          <div id="deniedLottieAvatar" style="display: flex; justify-content: center;">
+            <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_h3Bz5a.json"  background="transparent"  speed="1"  style="width: 150px; height: 150x;"  loop  autoplay></lottie-player> 
+          </div>
+          <div id="successLottieAvatar" style="display: flex; justify-content: center;">
+            <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_tAtUrg.json"  background="transparent"  speed="1"  style="width: 150px; height: 150px;"  loop  autoplay></lottie-player>
+          </div>
+
           <section id="overridePrevAvatar">
             <h3 class="text-light">Would you like to Override Your Current Avatar?</h3>
             <button class="btn btn-success" onclick="overrideNo()">No</button>
@@ -187,12 +194,12 @@
           <h4 class="fs-1 text-light">Account Personalization</h4>
       </div>
     </div>
-    <div class="row d-flex justify-content-center pb-5" style="overflow: scroll;">
+    <div class="row d-flex justify-content-center b-5">
         <div class="col-8 bg-secondary">
 
           <!-- Change Account Email and Pass -->
           <h2 class="pt-5"><i>Edit Account Details</i></h2>
-          <form class="w-25">
+          <form class="w-50">
             <div class="form-group">
               <label for="exampleInputEmail1">Email address</label>
               <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
@@ -212,7 +219,7 @@
 
           <div class="text-center">
             <h1>Friend's List</h1>
-            <div>
+            <div style="overflow: scroll;">
 
               <table class="table">
                 <thead>
@@ -242,13 +249,13 @@
             </div>
           </div>
           <div>
-            <button id="submitAddFriends">Submit</button>
+            <button class="btn-success" id="submitAddFriends">Submit</button>
           </div>
 
           <div id="deleteFriendTab">
             <h3>Select Friend(s) You wish to Remove</h3>
           </div>
-            <button id="cfmDelFriends" onclick="cfmDelFriends()">Confirm Delete</button>
+            <button class="btn-danger" id="cfmDelFriends" onclick="cfmDelFriends()">Confirm Delete</button>
         </div>
 
     </div>
@@ -260,8 +267,15 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   <script src="script.js"></script>
   <script>
+
+    /////////// Animations ///////////////////
+    $("#deniedLottieAvatar").hide();
+    $("#successLottieAvatar").hide();
+
+    //////////////////////////////////////////
 
     $('#addFriendTab').hide();
     $('#submitAddFriends').hide();
@@ -353,7 +367,53 @@
 
 function FinishAvatar()
 {
-  document.getElementById("avatarPic");
+  var avPicSrc = document.getElementById("avatarPic").src;
+  
+  if (avPicSrc == "https://stopscratchingtables.github.io/ID_Louwen-ZhiHong_Assignment-3/undefined" || avPicSrc == "file:///D:/School/Year%201.2/Interactive%20Development/Assignment%203/ID_Louwen-ZhiHong_Assignment-3/undefined" || avPicSrc == "file:///D:/School/Year%201.2/Interactive%20Development/Assignment%203/ID_Louwen-ZhiHong_Assignment-3/undefined" == null)
+  {
+
+    $('#cfmAvatar').hide();
+    $('#CavtarNavBar').hide();
+    $('#CavatarTops').hide();
+    $('#CavatarHair').hide();
+    $('#CavatarGender').hide();
+    $('#CavatarSkin').hide();
+
+    $('#CavatarExpressions').hide();
+    $("#deniedLottieAvatar").fadeIn();
+    $("#deniedLottieAvatar").fadeOut(4500);
+
+    setTimeout(msgAnimation, 4500);
+        
+    function msgAnimation(){
+      $('#cfmAvatar').show();
+      $('#CavtarNavBar').show();
+      alert("Invalid Avatar");
+    }
+
+
+  }
+  else
+  {
+    $('#cfmAvatar').hide();
+    $('#CavtarNavBar').hide();
+    $('#CavatarTops').hide();
+    $('#CavatarHair').hide();
+    $('#CavatarGender').hide();
+    $('#CavatarSkin').hide();
+
+    makeChangesAvatar(avPicSrc);
+
+    $("#successLottieAvatar").fadeIn();
+    $("#successLottieAvatar").fadeOut(4500);
+
+    setTimeout(msgAnimation, 4500);
+        
+    function msgAnimation(){
+      $('#cfmAvatar').show();
+      $('#CavtarNavBar').show();
+    }
+  }
 }
 
 // DISPLAYING FRIENDS LIST
@@ -576,6 +636,40 @@ function makeChanges()
         "userPoints": localStorage.getItem("userPoints"),
         "useremail": changeEmail,
         "userpass": changePass,
+        "userTokens": localStorage.getItem("userTokens"),
+        };
+        var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://studentcrud-a7cf.restdb.io/rest/nonegoidassignment/" + localStorage.getItem("userID"),
+        "method": "PUT",
+        "headers": {
+        "content-type": "application/json",
+        "x-apikey": "5ffd5eb61346a1524ff12901",
+        "cache-control": "no-cache"
+            },
+            "processData": false,
+            "data": JSON.stringify(jsondata)
+        }
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+        refreshData();
+        alert("Refresh Page once again to get updated Account Details");
+    });
+
+}
+
+function makeChangesAvatar(newAvatarsrc)
+{
+
+    var jsondata = {
+        "friendsList": localStorage.getItem("friendsList"),
+        "userAvatar": newAvatarsrc,
+        "userMembership": localStorage.getItem("userMembership"),
+        "userPoints": localStorage.getItem("userPoints"),
+        "useremail": localStorage.getItem("userName"),
+        "userpass": localStorage.getItem("userPass"),
         "userTokens": localStorage.getItem("userTokens"),
         };
         var settings = {

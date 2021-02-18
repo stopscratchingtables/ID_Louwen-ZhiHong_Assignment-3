@@ -127,7 +127,7 @@ body {
 	opacity: 0;
 	transition: 1s ease 0.3s;
 }
-.modal, .loadingLottie, .wrongPassLottie, .wrongPassLottie {
+.modal, .loadingLottie, .wrongPassLottie {
     display: flex;
     justify-content: center;
 }
