@@ -149,6 +149,10 @@
                             <button id="gsBtn" onclick="displayGames()">Start Game</button>
                             <div id="egBtnPlace"></div>
 
+                            <div id="endGameLottie" style="justify-content: center; text-align: center; padding-top: 85px;">
+                              <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_tAtUrg.json"  background="transparent"  speed="1"  style="width: 150px; height: 150px; margin: auto;"  loop  autoplay></lottie-player>
+                            </div>
+
                             <div id="gameLocation" style="justify-content: center; overflow: hidden;">
                               <canvas id="game" width="640" height="400"></canvas>
                             </div>
@@ -178,6 +182,7 @@
 
   $("#gamesProfiles").hide();
   $('#game').hide();
+  $('#endGameLottie').hide()
 
   const progress = document.querySelector('.progress-done');
   progress.innerHTML = localStorage.getItem("userPoints");
@@ -207,7 +212,15 @@
   function endGame()
   {
 
-    alert("Ending Game");
+    $("#endGameLottie").fadeIn();
+    $("#endGameLottie").fadeOut(3750);
+
+    setTimeout(msgAnimation, 3750);
+        
+    function msgAnimation(){
+      alert("Refresh Website to get updated details");
+    }
+
     $("#gamesProfiles").hide();
     $("span").remove();
     $("canvas").remove();
@@ -256,6 +269,7 @@
     localStorage.setItem("userTokens", localStorage.getItem("userTokens") - 1);
     localStorage.setItem("userPoints", prevPoints + newPoints);
     sessionStorage.clear();
+
 
     refreshData();
     });
