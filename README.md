@@ -19,9 +19,9 @@ We implemented games, a friend-buddy system, avatar creation and so much more on
 
 ### Check-List
 
-- [] Validate Code <br />
-- [] Check Spelling Errors <br />
-- [] Code Checked for Plagarism <br />
+- [x] Validate Code <br />
+- [x] Check Spelling Errors <br />
+- [x] Code Checked for Plagarism <br />
 - [x] ID and Class Names are effecient in understanding code <br />
 - [x] Multi-Device Friendly <br />
 
