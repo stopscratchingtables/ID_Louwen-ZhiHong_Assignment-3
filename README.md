@@ -94,6 +94,8 @@ earned!
 - Lotties
 <br/><br/>
 ## Testing :clipboard:
+HTML Validated
+CSS Validated
 <br/><br/>
 ## Credits :triangular_flag_on_post:
 
