@@ -4,7 +4,7 @@ Name: Hugo Von Louwen Dorosan and Chen Zhi Hong <br />
 Class: IT01 <br />
 ID: 10202923 and 10205253 <br />
 Website URL: https://stopscratchingtables.github.io/ID_Louwen-ZhiHong_Assignment-3/ <br />
-Website Demo Video: https://drive.google.com/drive/folders/14PpMMJtlhRxI7ym99w2-bRTSsSediIA8?usp=sharing<br />
+Website Demo Video: https://www.youtube.com/watch?v=a_LC6fn6OcI&feature=youtu.be <br />
 
 Tired of the old boring e-commerce websites that you most commonly used? Ever wished that there was a platform with a little more <i>"pizzazz"</i> or that touch of <i>"fun"</i>?<br />
 Yea, I thought so too!<br />
