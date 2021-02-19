@@ -14,7 +14,6 @@
   };
   
   $.ajax(settings).done(function (response) {
-    console.log(response);
     // Delta
     if (localStorage.getItem("userPoints") < 300)
     {
@@ -133,6 +132,7 @@ function ApplyVcherButton(value,minValue,vTitle)
 $( document ).ready(function() {
     var cartItems = localStorage.getItem("cartItem");
     cartItems = JSON.parse(cartItems);
+    //display cartitems by getting the info from local storage
     function DisplayCartItems(cartItems) {
         if (cartItems != null) {
             for (var i = 0; i < cartItems.length; i++){
@@ -165,11 +165,11 @@ $( document ).ready(function() {
             }
         }
       }
+      //gets the price of item from local storage 
       function GetItemPrice(title, list) {
         if (list != null) {
           for (var i = 0; i < list.length; i++) {
               if (list[i].title == title) {
-                  console.log(list[i].price);
                   return list[i].price;
               }
           }
@@ -178,8 +178,6 @@ $( document ).ready(function() {
       function CalcItemTotal() {
           $(".minButton").each(function(){
               $(this).click(function(){
-                  console.log($(this).next("span").text());
-                  console.log($(this).parent().parent().parent().parent().find(".cartPrice").text());
                   if ((parseInt($(this).next("span").text())) - 1 == 0) {
                       alert("Item cannot be less than zero");
                   }
@@ -190,7 +188,6 @@ $( document ).ready(function() {
                     var qty = parseInt($(this).next("span").text());
                     qty -= 1;
                     var newCartPrice = GetItemPrice(trimItemName, cartItems) * qty;
-                    console.log(newCartPrice);
                     $(this).next("span").text(qty);
                     $(this).parent().parent().parent().parent().find(".cartPrice").text(newCartPrice);
                     CalcCartTotal();
@@ -204,7 +201,6 @@ $( document ).ready(function() {
                 var qty = parseInt($(this).parent().find(".qty").text());
                 qty += 1;
                 var newCartPrice = GetItemPrice(trimItemName, cartItems) * qty;
-                console.log(newCartPrice);
                 $(this).parent().find(".qty").text(qty);
                 $(this).parent().parent().parent().parent().find(".cartPrice").text(newCartPrice);
                 CalcCartTotal();
@@ -231,11 +227,9 @@ $( document ).ready(function() {
           $(".purchase").click(function(){
             var totalItems = 0;
             $(".qty").each(function(){
-            console.log($(this).text());
             totalItems += parseFloat($(this).html());
           });
           AddToken(totalItems);
-          console.log(totalItems);
           alert(("your purchase of $" + $(".cartTotal").text() + " is succesful"));
           $(".itemContainer").remove();
           CalcCartTotal();
@@ -281,8 +275,6 @@ function AddToken(itemPurchasedAmt)
         };
 
     $.ajax(settings).done(function (response) {
-        console.log(response);
-
         // REFRESHES NEW DATA INTO LOCAL STORAGE
         refreshData();
         alert("Refresh to get updated details");

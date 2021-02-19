@@ -47,7 +47,6 @@ function refreshData()
       };
       
       $.ajax(settings).done(function (response) {
-        console.log(response);
         for (var i=0; i < response.length; i++)
         {
             if (localStorage.getItem("userName") == response[i].useremail)
@@ -113,7 +112,6 @@ function createAvatar(gCode) {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data);
         console.log("Status" + data.status + "\nAvatar SRC" + data.avatarSrc + "\nThumbnail SRC" + data.thumbnailSrc + "\n" + data.doppelme_key);
         localStorage.setItem("AvatarKey", data.doppelme_key);
 
@@ -194,7 +192,6 @@ function EditAvatarAsset(eCode, aCode) {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data);
         console.log("Thumbnail SRC: " + data.thumbnailSrc);
 
         var imageurl_Skin = data.thumbnailSrc;
@@ -256,7 +253,6 @@ function RemoveAvatarAsset(eCode, aCode) {
         console.log(response);
     })
     .then(data => {
-        console.log(data);
         console.log("Thumbnail SRC: " + data.thumbnailSrc);
 
         var imageurl_Skin = data.thumbnailSrc;
@@ -294,25 +290,6 @@ function DeleteAvatar() {
 
 $( document ).ready(function() {
     var cartArray = [];
-    function addToCart(event) {
-        var cartItems = localStorage.getItem("cartItem");
-        cartItems = JSON.parse(cartItems);
-        var button = event.target;
-        var shopItem = button.parentElement.parentElement;
-        var title = shopItem.getElementsByClassName("prodTitle")[0].innerText;
-        var img = shopItem.getElementsByClassName("prodImg")[0].src;
-        var price = shopItem.getElementsByClassName("prodPrice")[0].innerText;
-        if (CheckCartItems(title, cartItems) == false){
-          var newCartItem = new CartItems(img, title, price);
-          cartArray.push(newCartItem);
-          localStorage.setItem("cartItem", JSON.stringify(cartArray));
-          $(".cartLottie").fadeIn();
-          $(".cartLottie").fadeOut(1000);
-        }
-        else{
-            console.log("exist");
-        }
-    }
     function CheckCartItems(title, list) {
         if (list != null) {
           for (var i = 0; i < list.length; i++) {
@@ -362,13 +339,7 @@ $( document ).ready(function() {
             });
         });
     }
-    /*
-      var addToCartButtons = $(".addToCart")
-      for (var i = 0; i < addToCartButtons.length; i++)
-      {
-        var button = addToCartButtons[i]
-        button.addEventListener("click", addToCart);
-      }*/
+    //add to cart 
       $(".addToCart").each(function(){
           $(this).click(function(){
             var cartItems = localStorage.getItem("cartItem");
@@ -386,7 +357,7 @@ $( document ).ready(function() {
               $(".cartLottie").fadeOut(1000);
             }
             else{
-                console.log("exist");
+                alert("Item already in cart");
             }
           });
       });
