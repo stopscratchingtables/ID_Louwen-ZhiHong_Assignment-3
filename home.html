@@ -412,9 +412,9 @@
       // DISPLAYING POINT LOYALTY BAR
 
         const progress = document.querySelector('.progress-done');
-        progress.innerHTML = `<h4 class="text-dark" style="margin-top: 5px;">${localStorage.getItem("userPoints")}</h4>`
+        progress.innerHTML = `<h4 class="text-dark" style="margin-top: 5px;">${localStorage.getItem("userPoints")}</h4>`;
 
-        var points = parseInt(localStorage.getItem("userPoints")) / 900 * 100
+        var points = parseInt(localStorage.getItem("userPoints")) / 900 * 100;
         progress.style.width = points + '%';
         progress.style.opacity = 1;
 
@@ -434,7 +434,7 @@
         if (avatar != null){
           if (avatar.length > 5)
         {
-          $("avatarDefault").hide()
+          $("avatarDefault").hide();
           document.getElementById('avatarPlace').innerHTML = `<img src="${avatar}"><img>`;
         }
         }

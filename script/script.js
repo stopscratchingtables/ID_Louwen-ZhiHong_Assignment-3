@@ -44,11 +44,11 @@ function refreshData()
           "x-apikey": "5ffd5eb61346a1524ff12901",
           "cache-control": "no-cache"
         }
-      }
+      };
       
       $.ajax(settings).done(function (response) {
         console.log(response);
-        for (i=0; i < response.length; i++)
+        for (var i=0; i < response.length; i++)
         {
             if (localStorage.getItem("userName") == response[i].useremail)
             {
@@ -119,7 +119,7 @@ function createAvatar(gCode) {
 
         var imageurl = data.thumbnailSrc;
         var img = document.createElement('img');
-        img.src = imageurl
+        img.src = imageurl;
         $('#sampleAvatar').hide();
         document.getElementById("AvtarPicSpace").innerHTML = ('<img id="avatarPic" style="margin-top: 60px; margin-left: 60px;" src="' + img.src + '"></img>');
 
@@ -199,7 +199,7 @@ function EditAvatarAsset(eCode, aCode) {
 
         var imageurl_Skin = data.thumbnailSrc;
         var img = document.createElement('img');
-        img.src = imageurl_Skin
+        img.src = imageurl_Skin;
 
 
         var refedImage = refreshImage("avatarPic", data.thumbnailSrc);
@@ -230,7 +230,7 @@ function EditAvatarAssetColour(aCode, type, cCode)
 
         var imageurl_Skin = data.thumbnailSrc;
         var img = document.createElement('img');
-        img.src = imageurl_Skin
+        img.src = imageurl_Skin;
 
         var refedImage = refreshImage("avatarPic", data.thumbnailSrc);
         document.getElementById("avatarPic").remove();
@@ -293,7 +293,7 @@ function DeleteAvatar() {
 
 
 $( document ).ready(function() {
-    var cartArray = []
+    var cartArray = [];
     function addToCart(event) {
         var cartItems = localStorage.getItem("cartItem");
         cartItems = JSON.parse(cartItems);
@@ -310,7 +310,7 @@ $( document ).ready(function() {
           $(".cartLottie").fadeOut(1000);
         }
         else{
-            console.log("exist")
+            console.log("exist");
         }
     }
     function CheckCartItems(title, list) {
@@ -344,7 +344,7 @@ $( document ).ready(function() {
             else{
                 $(this).parent().parent().parent().show();
             }
-      })
+      });
       });
     }
     function ProdSearch() {
@@ -354,13 +354,13 @@ $( document ).ready(function() {
             $(".prodTitle").each(function(){
                 var title = $(this).text();
                 if (title.toLowerCase().indexOf(valueFilter) !== -1) {
-                    $(this).parent().parent().show()
+                    $(this).parent().parent().show();
                 }
                 else {
-                    $(this).parent().parent().hide()
+                    $(this).parent().parent().hide();
                 }
-            })
-        })
+            });
+        });
     }
     /*
       var addToCartButtons = $(".addToCart")
@@ -386,13 +386,13 @@ $( document ).ready(function() {
               $(".cartLottie").fadeOut(1000);
             }
             else{
-                console.log("exist")
+                console.log("exist");
             }
-          })
-      })
+          });
+      });
       ProdTypeSearch();
       ProdSearch();
-      $(".cartLottie").hide()
+      $(".cartLottie").hide();
 });
 
 

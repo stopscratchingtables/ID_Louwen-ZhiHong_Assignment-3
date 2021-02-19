@@ -11,7 +11,7 @@
       "x-apikey": "5ffd5eb61346a1524ff12901",
       "cache-control": "no-cache"
     }
-  }
+  };
   
   $.ajax(settings).done(function (response) {
     console.log(response);
@@ -108,10 +108,10 @@ function ApplyVcherButton(value,minValue,vTitle)
 {
   var cartTotal = parseFloat($(".cartTotal").text());
   if (cartTotal < minValue) {
-    alert("Total Amount is too little please buy more stuff")
+    alert("Total Amount is too little please buy more stuff");
   }
   else {
-    var newCartTotal = cartTotal - (cartTotal * value/100)
+    var newCartTotal = cartTotal - (cartTotal * value/100);
     $(".cartTotal").text(newCartTotal);
     $(".vouchButton").prop("disabled", true);
     $(".modal").fadeIn();
@@ -136,7 +136,7 @@ $( document ).ready(function() {
     function DisplayCartItems(cartItems) {
         if (cartItems != null) {
             for (var i = 0; i < cartItems.length; i++){
-                var cartAppend = $(".cartAppend")
+                var cartAppend = $(".cartAppend");
                     $(".cartAppend").append(`
                     <div class="itemContainer">
                     <div class="row">
@@ -169,7 +169,7 @@ $( document ).ready(function() {
         if (list != null) {
           for (var i = 0; i < list.length; i++) {
               if (list[i].title == title) {
-                  console.log(list[i].price)
+                  console.log(list[i].price);
                   return list[i].price;
               }
           }
@@ -178,20 +178,20 @@ $( document ).ready(function() {
       function CalcItemTotal() {
           $(".minButton").each(function(){
               $(this).click(function(){
-                  console.log($(this).next("span").text())
-                  console.log($(this).parent().parent().parent().parent().find(".cartPrice").text())
+                  console.log($(this).next("span").text());
+                  console.log($(this).parent().parent().parent().parent().find(".cartPrice").text());
                   if ((parseInt($(this).next("span").text())) - 1 == 0) {
-                      alert("Item cannot be less than zero")
+                      alert("Item cannot be less than zero");
                   }
                   else {
                     var itemName = $(this).parent().parent().parent().parent().find(".itemTitle").text();
                     var trimItemName = $.trim(itemName); 
-                    var cartPrice = parseFloat($(this).parent().parent().parent().parent().find(".cartPrice").text())
-                    var qty = parseInt($(this).next("span").text())
+                    var cartPrice = parseFloat($(this).parent().parent().parent().parent().find(".cartPrice").text());
+                    var qty = parseInt($(this).next("span").text());
                     qty -= 1;
                     var newCartPrice = GetItemPrice(trimItemName, cartItems) * qty;
                     console.log(newCartPrice);
-                    $(this).next("span").text(qty)
+                    $(this).next("span").text(qty);
                     $(this).parent().parent().parent().parent().find(".cartPrice").text(newCartPrice);
                     CalcCartTotal();
                   }
@@ -201,7 +201,7 @@ $( document ).ready(function() {
             $(this).click(function(){
                 var itemName = $(this).parent().parent().parent().parent().find(".itemTitle").text();
                 var trimItemName = $.trim(itemName);
-                var qty = parseInt($(this).parent().find(".qty").text())
+                var qty = parseInt($(this).parent().find(".qty").text());
                 qty += 1;
                 var newCartPrice = GetItemPrice(trimItemName, cartItems) * qty;
                 console.log(newCartPrice);
@@ -212,7 +212,7 @@ $( document ).ready(function() {
         });
       }
       function CalcCartTotal() {
-          var sum = 0
+          var sum = 0;
         $(".cartPrice").each(function(){
             sum += parseFloat($(this).html());
           });
@@ -223,24 +223,24 @@ $( document ).ready(function() {
           $(".remove").each(function(){
               $(this).click(function(){
                   $(this).parent().parent().remove();
-                  CalcCartTotal()
-              })
-          })
+                  CalcCartTotal();
+              });
+          });
       }
       function Purchase() {
           $(".purchase").click(function(){
-            var totalItems = 0
+            var totalItems = 0;
             $(".qty").each(function(){
-            console.log($(this).text())
-            totalItems += parseFloat($(this).html())
-          })
+            console.log($(this).text());
+            totalItems += parseFloat($(this).html());
+          });
           AddToken(totalItems);
-          console.log(totalItems)
-          alert(("your purchase of $" + $(".cartTotal").text() + " is succesful"))
-          $(".itemContainer").remove()
+          console.log(totalItems);
+          alert(("your purchase of $" + $(".cartTotal").text() + " is succesful"));
+          $(".itemContainer").remove();
           CalcCartTotal();
-          localStorage.removeItem("cartItem")
-        })
+          localStorage.removeItem("cartItem");
+        });
       }
       $(".modal").hide();
       DisplayCartItems(cartItems);
@@ -278,7 +278,7 @@ function AddToken(itemPurchasedAmt)
             },
             "processData": false,
             "data": JSON.stringify(jsondata)
-        }
+        };
 
     $.ajax(settings).done(function (response) {
         console.log(response);

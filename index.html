@@ -116,7 +116,7 @@
       "x-apikey": "5ffd5eb61346a1524ff12901",
       "cache-control": "no-cache"
     }
-  }
+  };
 
   $.ajax(settings).done(function (response) {
     console.log(response);
@@ -231,11 +231,11 @@
         "x-apikey": "5ffd5eb61346a1524ff12901",
         "cache-control": "no-cache"
       }
-    }
+    };
 
     $.ajax(settings).done(function (response) {
       console.log(response);
-      var result = CheckUserExists(response, email)
+      var result = CheckUserExists(response, email);
 
     if (result == 1)
     {
@@ -284,7 +284,7 @@
             $("#SignUpButton").prop("disabled", true);
             
           }
-        }
+        };
 
         $.ajax(settings).done(function (response) {
           console.log(response);
@@ -313,6 +313,7 @@
 
 
 </script>
+
 
 </body>
 </html>
