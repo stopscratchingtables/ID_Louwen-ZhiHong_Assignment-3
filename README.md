@@ -10,6 +10,19 @@ Tired of the old boring e-commerce websites that you most commonly used? Ever wi
 Yea, I thought so too!<br />
 We plan to spice up your E-commerce shopping experience with fun gamifications and features to ensure you are enjoying your shopping experience!
 
+## Account Access to Different Loyalty Levels
+- Delta:<br/>
+  Email: deltaAccount@email.com<br/>
+  Password: delta<br/>
+  
+- Omega
+  Email: omegaAccount@email.com<br/>
+  Password: omega<br/>
+  
+- Alpha
+  Email: alphaAccount@email.com<br/>
+  Password: alpha<br/>
+
 ## Design Process :gem:
 Throughout the Design Process, we thought very deeply about our favourite and go-to E-Commerce sites. We listed down what made us so engraved onto them. Following that, we explored the many ideas of what features we would like to see implemented on our favourite sites. Henceforth, we created "NoNego!". 'No Nego' is an abbreviation from a popular phrase used on E-Commerce sitess, 'Nego'. Nego, is a short term for negotaition. Our aim is to have our E-commerce site's services and products so enticing that no user would ever think of negotating! Not even Asians! Hence, sparked the catchy name "NoNego"!
 
