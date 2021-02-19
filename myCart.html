@@ -153,6 +153,10 @@
                               <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_tAtUrg.json"  background="transparent"  speed="1"  style="width: 150px; height: 150px; margin: auto;"  loop  autoplay></lottie-player>
                             </div>
 
+                            <div id="deniedLottie" style="justify-content: center; text-align: center; padding-top: 85px;">
+                              <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_h3Bz5a.json"  background="transparent"  speed="1"  style="width: 150px; height: 150px; margin: auto;"  loop  autoplay></lottie-player> 
+                            </div>
+
                             <div id="gameLocation" style="justify-content: center; overflow: hidden;">
                               <canvas id="game" width="640" height="400"></canvas>
                             </div>
@@ -181,7 +185,8 @@
 
   $("#gamesProfiles").hide();
   $('#game').hide();
-  $('#endGameLottie').hide()
+  $('#endGameLottie').hide();
+  $('#deniedLottie').hide();
 
   const progress = document.querySelector('.progress-done');
   progress.innerHTML = localStorage.getItem("userPoints");
@@ -199,7 +204,16 @@
   {
     if (localStorage.getItem("userTokens") <= 0)
     {
-      alert("You do not have any tokens! Please purchase items to obtain tokens!");
+
+      $("#deniedLottie").fadeIn();
+      $("#deniedLottie").fadeOut(3750);
+
+      setTimeout(msgAnimation, 3750);
+          
+      function msgAnimation(){
+        selectElement("You do not have any tokens! Please purchase items to obtain tokens!");
+      }
+
     }
     else 
     {
