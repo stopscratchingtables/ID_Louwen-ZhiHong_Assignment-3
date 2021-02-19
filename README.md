@@ -90,6 +90,8 @@ earned!
 - Adobe Xd
 - Adobe Photoshop
 - RestDB.IO
+- IonIcons
+- Lotties
 <br/><br/>
 ## Testing :clipboard:
 <br/><br/>
