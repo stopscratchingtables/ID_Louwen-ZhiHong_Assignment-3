@@ -146,6 +146,7 @@ earned!
 | Video(s)        | Link           |
 | ------------- |:-------------:|
 | "Youtube PlayList (Louwen)"     | https://youtube.com/playlist?list=PLYHL00c8Nrmx7Na5g1na7UDcRjC4LV3Zk/ |
+| "Youtube PlayList (Zhi Hong)"     | https://www.youtube.com/playlist?list=PLqelQUHWKL-xxrD-nx2l_NqXxedMIh8EI|
 | "w3schools"     | https://www.w3schools.com/ |
 | "Bootstrap"     | https://getbootstrap.com/ |
 | "StackOverflow"     | https://stackoverflow.com/ |
